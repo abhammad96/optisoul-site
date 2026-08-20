@@ -60,24 +60,30 @@
     "Segoe UI", Tahoma, Arial, sans-serif;
 }
 
-/* ---------- الخط المستضاف محليًا (assets/fonts/) — لا طلب خارجي ---------- */
+/* ---------- الخط المستضاف محليًا (assets/fonts/) — لا طلب خارجي ----------
+   woff2 مُولَّد فعليًا من ttf عبر fonttools (fontTools.ttLib.woff2) — خفض
+   69.7% بالمتوسط (730148 → 221560 بايت للأوزان الثلاثة). ttf يبقى fallback
+   للمتصفحات القديمة التي لا تدعم woff2. */
 @font-face {
   font-family: "IBM Plex Sans Arabic";
-  src: url("fonts/IBMPlexSansArabic-Regular.ttf") format("truetype");
+  src: url("fonts/IBMPlexSansArabic-Regular.woff2") format("woff2"),
+       url("fonts/IBMPlexSansArabic-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "IBM Plex Sans Arabic";
-  src: url("fonts/IBMPlexSansArabic-SemiBold.ttf") format("truetype");
+  src: url("fonts/IBMPlexSansArabic-SemiBold.woff2") format("woff2"),
+       url("fonts/IBMPlexSansArabic-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "IBM Plex Sans Arabic";
-  src: url("fonts/IBMPlexSansArabic-Bold.ttf") format("truetype");
+  src: url("fonts/IBMPlexSansArabic-Bold.woff2") format("woff2"),
+       url("fonts/IBMPlexSansArabic-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -96,17 +102,29 @@ html {
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
 
+/* الطباعة العربية — القيم مقيسة قبل التغيير: line-height:1.6 (نص)، 1.35/1.45
+   (h1/h2)، font-size:16px، بلا letter-spacing وبلا text-align صريح. القيم
+   الجديدة أدناه: 1.7 للنص الجاري (تباين رأسي أوسع للمحارف العربية، يمنع
+   قصّ النزول والتشكيل الذي يسبّبه ارتفاع سطر محسوب للاتينية)، 1.3 للعناوين،
+   letter-spacing:0 صريح (الحروف متصلة، أي تباعد يكسر الاتصال)، text-align:
+   start صريح (يورَّث لكل عنصر ابن، صفر استخدام لـ right). */
 body {
   background: var(--background);
   color: var(--text-primary);
   font-family: var(--font-family);
   font-weight: 400;
-  line-height: 1.6; /* bodyLarge — app_theme.dart:791 */
-  font-size: 16px;  /* bodyLarge */
+  line-height: 1.7;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-align: start;
   min-width: 320px;
 }
 
-h1, h2, h3, .brand, .btn, label, button { font-family: var(--font-family); }
+@media (max-width: 640px) {
+  body { font-size: 17px; } /* حدّ أدنى 17px على الجوال — العربية تبدو أصغر بصريًا عند نفس الحجم الاسمي للاتينية */
+}
+
+h1, h2, h3, .brand, .btn, label, button { font-family: var(--font-family); line-height: 1.3; }
 
 /* ---------- تخطَّ إلى المحتوى ---------- */
 .skip-link {
@@ -235,8 +253,8 @@ summary:focus-visible {
   background: transparent;
   border: 1px solid var(--button-edge);
   border-radius: var(--r-button);
-  inline-size: 40px;
-  block-size: 40px;
+  inline-size: 44px;
+  block-size: 44px;
   cursor: pointer;
   flex: none;
 }
@@ -271,7 +289,21 @@ summary:focus-visible {
 main { max-width: 1040px; margin-inline: auto; padding-inline: var(--s5); }
 .content-narrow { max-width: 860px; margin-inline: auto; padding-inline: var(--s5); }
 
-section { scroll-margin-block-start: 84px; } /* يعوّض الترويسة الثابتة عند التنقّل الداخلي */
+/* ارتفاع الترويسة الثابتة — محسوب من صندوقها الفعلي وليس رقمًا عشوائيًا:
+   padding-block(s3=12px)×2 = 24px + أطول عنصر داخلي (نفس ارتفاع .nav-toggle
+   بعد رفعه إلى 44px لهدف اللمس — أطول من brand-mark 28px) = 44px + حد سفلي
+   1px = 69px. زائدًا مسافة تنفّس s4=16px قبل عنوان القسم = 85px. */
+:root { --header-block-size: 69px; }
+
+section {
+  scroll-margin-block-start: calc(var(--header-block-size) + var(--s4)); /* 85px — يعوّض الترويسة الثابتة عند التنقّل الداخلي (نقر أو Tab+Enter، كلاهما يُفعّل نفس رابط التجزئة) */
+}
+
+/* إيقاع رأسي بين الأقسام الرئيسية — s6×2=64px مشتقة من AppSpacing (لا رقم
+   عشوائي)، يفصل «الوحدات الست» عن «كيف يعمل» عن «الأسئلة» فصلًا واضحًا.
+   تتضامّ (collapse) مع الهامش السفلي للعنصر السابق (.trust-bar/.card) فتبقى
+   64px نهائيًا لا 64+سابق. */
+#modules, #how, #faq { margin-block-start: calc(var(--s6) * 2); }
 
 .card {
   background: var(--surface);
@@ -286,7 +318,6 @@ h1 {
   font-weight: 700;
   color: var(--text-primary);
   margin: 0 0 var(--s1);
-  line-height: 1.35;
 }
 
 h2 {
@@ -296,7 +327,6 @@ h2 {
   margin: var(--s6) 0 var(--s3);
   padding-block-start: var(--s5);
   border-block-start: 1px solid var(--hairline);
-  line-height: 1.45;
 }
 
 .card > h2:first-of-type,
@@ -304,9 +334,12 @@ section > h2:first-child { border-block-start: 0; padding-block-start: 0; margin
 
 h3 { font-size: 16px; font-weight: 600; margin: var(--s5) 0 var(--s2); color: var(--text-primary); }
 
-p { margin: 0 0 var(--s3); color: var(--text-primary); }
+/* عرض أقصى للنص الجاري (~68ch) لمنع فقد العين موضعها عند سطر طويل يمتد
+   بعرض الشاشة كاملة. ch مبنية على عرض محرف "0" في اللاتينية وليست مقياسًا
+   دقيقًا للعربية، لكنها الأداة الوحيدة المتاحة بـCSS خام؛ رُوجعت بصريًا. */
+p { margin: 0 0 var(--s3); color: var(--text-primary); max-width: 68ch; }
 
-ul { margin: 0 0 var(--s3); padding-inline-start: var(--s5); }
+ul { margin: 0 0 var(--s3); padding-inline-start: var(--s5); max-width: 68ch; }
 li { margin-block-end: var(--s2); }
 
 .meta { color: var(--text-muted); font-size: 13px; margin: 0 0 var(--s1); }
@@ -333,9 +366,6 @@ strong { font-weight: 600; color: var(--text-primary); }
 
 .btn-primary { background: var(--brand); color: var(--on-brand); border: 1px solid var(--button-edge); }
 .btn-primary:hover { background: #2E4189; transform: translateY(-1px); }
-
-.btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--button-edge); }
-.btn-secondary:hover { border-color: var(--stroke); transform: translateY(-1px); }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--s3); margin-block-start: var(--s4); }
 
@@ -406,9 +436,14 @@ strong { font-weight: 600; color: var(--text-primary); }
 [role="tab"] svg { inline-size: 18px; block-size: 18px; flex: none; }
 
 [role="tab"][aria-selected="true"] {
-  background: var(--input-fill);
+  /* خلفية + حد + وزن خط أثقل معًا — لا تمييز على إشارة واحدة (ضعاف البصر /
+     إضاءة قوية). لون التمييز (mask) مقيس من navIndicator في app_theme.dart:
+     interactive.withValues(alpha: 0.14) = rgba(0,255,204,0.14) — نفس تلوين
+     العنصر النشط في التطبيق، وليس brand. */
+  background: rgba(0, 255, 204, 0.14);
   border-color: var(--interactive);
   color: var(--text-primary);
+  font-weight: 700;
 }
 
 [role="tab"]:hover { color: var(--text-primary); border-color: var(--stroke); }
@@ -444,7 +479,7 @@ strong { font-weight: 600; color: var(--text-primary); }
 .module-icon { inline-size: 28px; block-size: 28px; color: var(--interactive); flex: none; }
 .module-icon svg { display: block; inline-size: 100%; block-size: 100%; }
 .module strong { font-size: 15px; font-weight: 600; color: var(--text-primary); }
-.module span { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+.module span { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
 
 /* ---------- كيف يعمل — خطوات مرقّمة ---------- */
 .steps {
@@ -605,6 +640,21 @@ footer {
   .site-nav a:last-child { border-block-end: 0; }
 
   .nav-toggle { display: flex; }
+
+  /* أهداف اللمس — WCAG 2.5.8: أي عنصر تفاعلي دون 44×44px يُرفَع بـ
+     min-block-size/min-inline-size (لا بزيادة حجم الخط) على الجوال فقط. */
+  .lang-toggle,
+  [role="tab"] {
+    min-block-size: 44px;
+    min-inline-size: 44px;
+  }
+
+  .site-nav a,
+  .footer-col a {
+    min-block-size: 44px;
+    display: flex;
+    align-items: center;
+  }
 }
 
 @media (min-width: 641px) and (max-width: 900px) {
