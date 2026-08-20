@@ -4,152 +4,308 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Opti Soul — رفيقك في اللياقة والصحة</title>
-<meta name="description" content="Opti Soul — تمارينك وأكلك ونومك وبياناتك الصحية في مكان واحد.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Opti Soul — تطبيق عربي لمتابعة اللياقة والصحة: تمارين القوة، الكارديو والكروسفت، النوم، البيانات الصحية، والتغذية، في مكان واحد.">
+<link rel="canonical" href="https://optisoul.app/">
+<link rel="alternate" hreflang="ar" href="https://optisoul.app/">
+<link rel="alternate" hreflang="en" href="https://optisoul.app/">
+<link rel="alternate" hreflang="x-default" href="https://optisoul.app/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Opti Soul">
+<meta property="og:title" content="Opti Soul — رفيقك في اللياقة والصحة">
+<meta property="og:description" content="تطبيق عربي لمتابعة اللياقة والصحة: تمارين القوة، الكارديو والكروسفت، النوم، البيانات الصحية، والتغذية، في مكان واحد.">
+<meta property="og:url" content="https://optisoul.app/">
+<meta property="og:image" content="https://optisoul.app/assets/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="شعار Opti Soul">
+<meta property="og:locale" content="ar_SA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Opti Soul — رفيقك في اللياقة والصحة">
+<meta name="twitter:description" content="تطبيق عربي لمتابعة اللياقة والصحة: تمارين القوة، الكارديو والكروسفت، النوم، البيانات الصحية، والتغذية، في مكان واحد.">
+<meta name="twitter:image" content="https://optisoul.app/assets/og/og-image.png">
+
+<link rel="preload" href="assets/fonts/IBMPlexSansArabic-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/IBMPlexSansArabic-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Opti Soul",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "iOS",
+  "description": "تطبيق عربي لمتابعة اللياقة والصحة: تمارين القوة، الكارديو والكروسفت، النوم، البيانات الصحية، والتغذية، في مكان واحد.",
+  "url": "https://optisoul.app/",
+  "image": "https://optisoul.app/assets/og/og-image.png",
+  "inLanguage": ["ar", "en"]
+}
+</script>
 </head>
 <body>
 
+<a class="skip-link" href="#main">
+  <span data-ar>تخطَّ إلى المحتوى</span><span data-en hidden>Skip to content</span>
+</a>
+
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href="index.html">
+    <a class="brand" href="#top">
       <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-name">Opti Soul</span>
     </a>
-    <button id="langBtn" class="lang-toggle" type="button">English</button>
+
+    <nav class="site-nav" id="siteNav" aria-label="التنقّل الرئيسي">
+      <a href="#top"><span data-ar>الرئيسية</span><span data-en hidden>Home</span></a>
+      <a href="#modules"><span data-ar>الوحدات</span><span data-en hidden>Modules</span></a>
+      <a href="#faq"><span data-ar>الأسئلة</span><span data-en hidden>FAQ</span></a>
+      <a href="support.html"><span data-ar>الدعم</span><span data-en hidden>Support</span></a>
+      <a href="privacy.html"><span data-ar>الخصوصية</span><span data-en hidden>Privacy</span></a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="langBtn" class="lang-toggle" type="button">English</button>
+      <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+        <span class="bar-line" aria-hidden="true"></span>
+        <span class="bar-line" aria-hidden="true"></span>
+        <span class="bar-line" aria-hidden="true"></span>
+        <span class="sr-only">
+          <span data-ar>فتح القائمة</span><span data-en hidden>Open menu</span>
+        </span>
+      </button>
+    </div>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-<!-- ==================== العربية ==================== -->
-<section class="card" data-ar>
-  <h1>من اليوم، صحتك ولياقتك لها رفيق ما ينساك</h1>
-  <p><span class="ltr">Opti Soul</span> تطبيق عربي لمتابعة اللياقة والصحة في مكان واحد: تمارين القوة، الكارديو والكروسفت، النوم، البيانات الصحية، الأكل، والمايكروز.</p>
+<!-- ==================== القسم البطولي ==================== -->
+<section id="top" class="card reveal">
+  <h1>
+    <span data-ar>من اليوم، صحتك ولياقتك لها رفيق ما ينساك</span>
+    <span data-en hidden>From today, your health and fitness have a companion that never forgets</span>
+  </h1>
+  <p>
+    <span data-ar><span class="ltr">Opti Soul</span> تطبيق عربي لمتابعة اللياقة والصحة في مكان واحد: تمارين القوة، الكارديو والكروسفت، النوم، البيانات الصحية، الأكل، والمايكروز.</span>
+    <span data-en hidden>Opti Soul is an Arabic app for tracking fitness and health in one place: strength training, cardio and CrossFit, sleep, health data, nutrition, and macros.</span>
+  </p>
+
+  <div class="beta-banner">
+    <span class="beta-dot" aria-hidden="true"></span>
+    <span data-ar>التطبيق في نسخة تجريبية مغلقة حاليًا.</span>
+    <span data-en hidden>The app is currently in closed beta.</span>
+  </div>
+
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="mailto:support@optisoul.app?subject=Opti%20Soul%20Beta">
+      <span data-ar>انضم للنسخة التجريبية</span><span data-en hidden>Join the beta</span>
+    </a>
+    <a class="btn btn-secondary" href="#modules">
+      <span data-ar>تعرّف على الوحدات</span><span data-en hidden>Explore the modules</span>
+    </a>
+  </div>
 </section>
 
-<div class="beta-banner" data-ar>
-  <span class="beta-dot" aria-hidden="true"></span>
-  <span>التطبيق في نسخة تجريبية مغلقة حاليًا.</span>
-</div>
-
-<div class="modules" data-ar>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6M6 7v10M18 7v10M20 9v6M6 12h12"/></svg></span>
-    <strong>القوة</strong>
-    <span>برامج تدريب وجلسات قوة بمجموعات وتكرارات وأوزان، مع سجل تقدّم لكل تمرين.</span>
+<!-- ==================== شريط الثقة ==================== -->
+<div class="trust-bar reveal">
+  <div class="trust-item">
+    <span class="check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+    <span data-ar>عربي بالكامل</span><span data-en hidden>Fully Arabic</span>
   </div>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 3 12 2-8 2 2h5"/></svg></span>
-    <strong>الكارديو</strong>
-    <span>جري ومشي ودراجة وسباحة وغيرها — المدة والمسافة والسعرات المحروقة.</span>
+  <div class="trust-item">
+    <span class="check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+    <span data-ar>بياناتك ملكك</span><span data-en hidden>Your data is yours</span>
   </div>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13V9M9 3h6"/></svg></span>
-    <strong>الكروسفت</strong>
-    <span>تسجيل WODs بصيغها المختلفة، وأرقامك الشخصية في الحركات الأساسية.</span>
-  </div>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg></span>
-    <strong>النوم</strong>
-    <span>تسجيل يدوي أو مزامنة تلقائية، ومتابعة المدة والجودة عبر الوقت.</span>
-  </div>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.9 9.2 2.4 5.5 6 5c2-.3 3.7.8 4.5 2.2C11.3 5.8 13 4.7 15 5c3.6.5 5.1 4.2 3.5 7.5C16 16.65 12 21 12 21Z"/><path d="M12 9v4M10 11h4"/></svg></span>
-    <strong>الصحة</strong>
-    <span>الوزن ونبض الراحة وضغط الدم ومحيطات الجسم — قراءات يدوية أو مُزامنة.</span>
-  </div>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v8M4 3v5a2 2 0 0 0 4 0V3M16 3c-1.7 0-3 2.2-3 5s1.3 5 3 5v8"/></svg></span>
-    <strong>التغذية</strong>
-    <span>بحث في قاعدة أطعمة محلية أو مسح باركود، ومتابعة السعرات والمايكروز يوميًا.</span>
+  <div class="trust-item">
+    <span class="check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+    <span data-ar>يعمل مع <span class="ltr">Apple Health</span></span><span data-en hidden>Works with Apple Health</span>
   </div>
 </div>
 
-<div class="tiles" data-ar>
-  <a class="tile" href="support.html">
-    <strong>الدعم</strong>
-    <span>أسئلة شائعة وطريقة التواصل معنا</span>
-  </a>
-  <a class="tile" href="privacy.html">
-    <strong>سياسة الخصوصية</strong>
-    <span>كيف نتعامل مع بياناتك الصحية</span>
-  </a>
-</div>
+<!-- ==================== الوحدات — تبويبات ==================== -->
+<section id="modules" class="reveal" aria-labelledby="modules-heading">
+  <h2 id="modules-heading"><span data-ar>الوحدات الست</span><span data-en hidden>The Six Modules</span></h2>
 
-<!-- ==================== English ==================== -->
-<section class="card" data-en hidden>
-  <h1>From today, your health and fitness have a companion that never forgets</h1>
-  <p>Opti Soul is an Arabic app for tracking fitness and health in one place: strength training, cardio and CrossFit, sleep, health data, nutrition, and macros.</p>
+  <div class="tablist" role="tablist" aria-label="الوحدات">
+    <button role="tab" id="tab-strength" aria-controls="panel-strength" aria-selected="true" tabindex="0">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6M6 7v10M18 7v10M20 9v6M6 12h12"/></svg>
+      <span data-ar>القوة</span><span data-en hidden>Strength</span>
+    </button>
+    <button role="tab" id="tab-cardio" aria-controls="panel-cardio" aria-selected="false" tabindex="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-6 3 12 2-8 2 2h5"/></svg>
+      <span data-ar>الكارديو</span><span data-en hidden>Cardio</span>
+    </button>
+    <button role="tab" id="tab-crossfit" aria-controls="panel-crossfit" aria-selected="false" tabindex="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 13V9M9 3h6"/></svg>
+      <span data-ar>الكروسفت</span><span data-en hidden>CrossFit</span>
+    </button>
+    <button role="tab" id="tab-sleep" aria-controls="panel-sleep" aria-selected="false" tabindex="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      <span data-ar>النوم</span><span data-en hidden>Sleep</span>
+    </button>
+    <button role="tab" id="tab-health" aria-controls="panel-health" aria-selected="false" tabindex="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.35-9.5-8.5C.9 9.2 2.4 5.5 6 5c2-.3 3.7.8 4.5 2.2C11.3 5.8 13 4.7 15 5c3.6.5 5.1 4.2 3.5 7.5C16 16.65 12 21 12 21Z"/><path d="M12 9v4M10 11h4"/></svg>
+      <span data-ar>الصحة</span><span data-en hidden>Health</span>
+    </button>
+    <button role="tab" id="tab-nutrition" aria-controls="panel-nutrition" aria-selected="false" tabindex="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v8M4 3v5a2 2 0 0 0 4 0V3M16 3c-1.7 0-3 2.2-3 5s1.3 5 3 5v8"/></svg>
+      <span data-ar>التغذية</span><span data-en hidden>Nutrition</span>
+    </button>
+  </div>
+
+  <div role="tabpanel" id="panel-strength" aria-labelledby="tab-strength">
+    <h3><span data-ar>القوة</span><span data-en hidden>Strength</span></h3>
+    <p><span data-ar>برامج تدريب وجلسات قوة بمجموعات وتكرارات وأوزان، مع سجل تقدّم لكل تمرين.</span><span data-en hidden>Training programmes and strength sessions with sets, reps and weights, plus a progress log per exercise.</span></p>
+    <ul>
+      <li><span data-ar>تسجيل المجموعات والتكرارات والأوزان لكل تمرين</span><span data-en hidden>Log sets, reps and weights for every exercise</span></li>
+      <li><span data-ar>سجل تقدّم تلقائي لكل تمرين بمرور الوقت</span><span data-en hidden>Automatic progress log per exercise over time</span></li>
+    </ul>
+  </div>
+
+  <div role="tabpanel" id="panel-cardio" aria-labelledby="tab-cardio">
+    <h3><span data-ar>الكارديو</span><span data-en hidden>Cardio</span></h3>
+    <p><span data-ar>جري ومشي ودراجة وسباحة وغيرها — المدة والمسافة والسعرات المحروقة.</span><span data-en hidden>Running, walking, cycling, swimming and more — duration, distance and calories burned.</span></p>
+    <ul>
+      <li><span data-ar>أنواع كارديو متعددة: جري، مشي، دراجة، سباحة</span><span data-en hidden>Multiple cardio types: running, walking, cycling, swimming</span></li>
+      <li><span data-ar>تتبع المدة والمسافة والسعرات المحروقة</span><span data-en hidden>Track duration, distance and calories burned</span></li>
+    </ul>
+  </div>
+
+  <div role="tabpanel" id="panel-crossfit" aria-labelledby="tab-crossfit">
+    <h3><span data-ar>الكروسفت</span><span data-en hidden>CrossFit</span></h3>
+    <p><span data-ar>تسجيل <span class="ltr">WODs</span> بصيغها المختلفة، وأرقامك الشخصية في الحركات الأساسية.</span><span data-en hidden>Log WODs in their various formats, and track personal records in foundational movements.</span></p>
+    <ul>
+      <li><span data-ar>تسجيل <span class="ltr">WODs</span> بصيغها المختلفة</span><span data-en hidden>Log WODs in their various formats</span></li>
+      <li><span data-ar>أرقامك الشخصية (<span class="ltr">PRs</span>) في الحركات الأساسية</span><span data-en hidden>Your personal records (PRs) in foundational movements</span></li>
+    </ul>
+  </div>
+
+  <div role="tabpanel" id="panel-sleep" aria-labelledby="tab-sleep">
+    <h3><span data-ar>النوم</span><span data-en hidden>Sleep</span></h3>
+    <p><span data-ar>تسجيل يدوي أو مزامنة تلقائية، ومتابعة المدة والجودة عبر الوقت.</span><span data-en hidden>Manual logging or automatic sync, tracking duration and quality over time.</span></p>
+    <ul>
+      <li><span data-ar>تسجيل يدوي أو مزامنة تلقائية من تطبيق الصحة</span><span data-en hidden>Manual logging or automatic sync from the Health app</span></li>
+      <li><span data-ar>متابعة المدة والجودة عبر الوقت</span><span data-en hidden>Track duration and quality over time</span></li>
+    </ul>
+  </div>
+
+  <div role="tabpanel" id="panel-health" aria-labelledby="tab-health">
+    <h3><span data-ar>الصحة</span><span data-en hidden>Health</span></h3>
+    <p><span data-ar>الوزن ونبض الراحة وضغط الدم ومحيطات الجسم — قراءات يدوية أو مُزامنة.</span><span data-en hidden>Weight, resting heart rate, blood pressure and body measurements — manual or synced.</span></p>
+    <ul>
+      <li><span data-ar>الوزن ونبض الراحة وضغط الدم ومحيطات الجسم</span><span data-en hidden>Weight, resting heart rate, blood pressure and body measurements</span></li>
+      <li><span data-ar>قراءات يدوية أو مُزامنة تلقائيًا</span><span data-en hidden>Manual or automatically synced readings</span></li>
+    </ul>
+  </div>
+
+  <div role="tabpanel" id="panel-nutrition" aria-labelledby="tab-nutrition">
+    <h3><span data-ar>التغذية</span><span data-en hidden>Nutrition</span></h3>
+    <p><span data-ar>بحث في قاعدة أطعمة محلية أو مسح باركود، ومتابعة السعرات والمايكروز يوميًا.</span><span data-en hidden>Search a local food database or scan a barcode, and track daily calories and macros.</span></p>
+    <ul>
+      <li><span data-ar>بحث في قاعدة أطعمة محلية أو مسح باركود</span><span data-en hidden>Search a local food database or scan a barcode</span></li>
+      <li><span data-ar>متابعة السعرات والمايكروز يوميًا</span><span data-en hidden>Track daily calories and macros</span></li>
+    </ul>
+  </div>
 </section>
 
-<div class="beta-banner" data-en hidden>
-  <span class="beta-dot" aria-hidden="true"></span>
-  <span>The app is currently in closed beta.</span>
-</div>
+<!-- ==================== كيف يعمل ==================== -->
+<section id="how" class="reveal" aria-labelledby="how-heading">
+  <h2 id="how-heading"><span data-ar>كيف يعمل</span><span data-en hidden>How It Works</span></h2>
+  <div class="steps">
+    <div class="step">
+      <span class="step-number" aria-hidden="true">1</span>
+      <h3><span data-ar>أنشئ حسابك</span><span data-en hidden>Create your account</span></h3>
+      <p><span data-ar>سجّل بريدك أو بحساب <span class="ltr">Apple</span> خلال ثوانٍ.</span><span data-en hidden>Sign up with your email or Apple account in seconds.</span></p>
+    </div>
+    <div class="step">
+      <span class="step-number" aria-hidden="true">2</span>
+      <h3><span data-ar>أكمل ملفك الصحي</span><span data-en hidden>Complete your health profile</span></h3>
+      <p><span data-ar>الطول والوزن والهدف، لحساب احتياجك اليومي من السعرات والمغذيات.</span><span data-en hidden>Height, weight and goal, to calculate your daily calorie and macronutrient needs.</span></p>
+    </div>
+    <div class="step">
+      <span class="step-number" aria-hidden="true">3</span>
+      <h3><span data-ar>سجّل يومك</span><span data-en hidden>Log your day</span></h3>
+      <p><span data-ar>تمارين، أكل، نوم، وقياسات صحية — كلها في مكان واحد.</span><span data-en hidden>Workouts, meals, sleep and health measurements — all in one place.</span></p>
+    </div>
+  </div>
+</section>
 
-<div class="modules" data-en hidden>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6M6 7v10M18 7v10M20 9v6M6 12h12"/></svg></span>
-    <strong>Strength</strong>
-    <span>Training programmes and strength sessions with sets, reps and weights, plus a progress log per exercise.</span>
-  </div>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 3 12 2-8 2 2h5"/></svg></span>
-    <strong>Cardio</strong>
-    <span>Running, walking, cycling, swimming and more — duration, distance and calories burned.</span>
-  </div>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13V9M9 3h6"/></svg></span>
-    <strong>CrossFit</strong>
-    <span>Log WODs in their various formats, and track personal records in foundational movements.</span>
-  </div>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg></span>
-    <strong>Sleep</strong>
-    <span>Manual logging or automatic sync, tracking duration and quality over time.</span>
-  </div>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.9 9.2 2.4 5.5 6 5c2-.3 3.7.8 4.5 2.2C11.3 5.8 13 4.7 15 5c3.6.5 5.1 4.2 3.5 7.5C16 16.65 12 21 12 21Z"/><path d="M12 9v4M10 11h4"/></svg></span>
-    <strong>Health</strong>
-    <span>Weight, resting heart rate, blood pressure and body measurements — manual or synced.</span>
-  </div>
-  <div class="module">
-    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v8M4 3v5a2 2 0 0 0 4 0V3M16 3c-1.7 0-3 2.2-3 5s1.3 5 3 5v8"/></svg></span>
-    <strong>Nutrition</strong>
-    <span>Search a local food database or scan a barcode, and track daily calories and macros.</span>
-  </div>
-</div>
+<!-- ==================== الأسئلة الشائعة ==================== -->
+<section id="faq" class="reveal" aria-labelledby="faq-heading">
+  <h2 id="faq-heading"><span data-ar>الأسئلة الشائعة</span><span data-en hidden>Frequently Asked Questions</span></h2>
 
-<div class="tiles" data-en hidden>
-  <a class="tile" href="support.html">
-    <strong>Support</strong>
-    <span>FAQs and how to reach us</span>
-  </a>
-  <a class="tile" href="privacy.html">
-    <strong>Privacy Policy</strong>
-    <span>How we handle your health data</span>
-  </a>
-</div>
+  <details class="faq-item">
+    <summary>
+      <span><span data-ar>كيف أصدّر بياناتي؟</span><span data-en hidden>How do I export my data?</span></span>
+      <svg class="faq-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <p><span data-ar>من داخل التطبيق: الإعدادات ← بياناتي ← «تصدير بياناتي». يشمل الملف سجلات الوحدات الست كلها بصيغة مقروءة.</span><span data-en hidden>In the app: Settings &rsaquo; My Data &rsaquo; "Export my data". The file covers the records of all six modules in a legible format.</span></p>
+  </details>
+
+  <details class="faq-item">
+    <summary>
+      <span><span data-ar>كيف أحذف حسابي نهائيًا؟</span><span data-en hidden>How do I permanently delete my account?</span></span>
+      <svg class="faq-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <p><span data-ar>من داخل التطبيق: الإعدادات ← بياناتي ← «حذف الحساب نهائيًا». الحذف نهائي وغير قابل للاسترجاع، ويشمل كل بياناتك الشخصية والصحية.</span><span data-en hidden>In the app: Settings &rsaquo; My Data &rsaquo; "Permanently delete account". Deletion is permanent and irreversible, and covers all your personal and health data.</span></p>
+  </details>
+
+  <details class="faq-item">
+    <summary>
+      <span><span data-ar>كيف أوقف المزامنة مع تطبيق الصحة؟</span><span data-en hidden>How do I stop syncing with the Health app?</span></span>
+      <svg class="faq-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <p><span data-ar>من داخل التطبيق: الإعدادات ← التكاملات ← فصل الربط. تتوقف أي مزامنة جديدة، ويبقى ما سبقت مزامنته حتى تحذفه بنفسك.</span><span data-en hidden>In the app: Settings &rsaquo; Integrations &rsaquo; Disconnect. No further synchronization occurs; previously synced data remains until you delete it yourself.</span></p>
+  </details>
+
+  <details class="faq-item">
+    <summary>
+      <span><span data-ar>نسيت كلمة المرور</span><span data-en hidden>I forgot my password</span></span>
+      <svg class="faq-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <p><span data-ar>من شاشة الدخول اضغط «نسيت كلمة المرور؟» وأدخل بريدك، وبيوصلك رابط لتعيين كلمة مرور جديدة.</span><span data-en hidden>On the sign-in screen tap "Forgot your password?" and enter your email. You'll receive a link to set a new password.</span></p>
+  </details>
+
+  <details class="faq-item">
+    <summary>
+      <span><span data-ar>هل بياناتي الصحية تُستخدم في الإعلانات؟</span><span data-en hidden>Is my health data used for advertising?</span></span>
+      <svg class="faq-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <p>
+      <span data-ar>لا. بياناتك الصحية تُستخدم لتقديم الخدمة فقط، ولا يُفصح عنها لأغراض إعلانية أو تسويقية. التفاصيل الكاملة في <a href="privacy.html">سياسة الخصوصية</a>.</span>
+      <span data-en hidden>No. Your health data is used solely to provide the service and is not disclosed for advertising or marketing purposes. Full details in the <a href="privacy.html">Privacy Policy</a>.</span>
+    </p>
+  </details>
+
+  <p class="meta">
+    <span data-ar>لمزيد من الأسئلة، زُر صفحة <a href="support.html">الدعم</a>.</span>
+    <span data-en hidden>For more questions, visit the <a href="support.html">Support</a> page.</span>
+  </p>
+</section>
 
 </main>
 
 <footer>
-  <div class="foot-links" data-ar>
-    <a href="index.html">الرئيسية</a>
-    <a href="support.html">الدعم</a>
-    <a href="privacy.html">سياسة الخصوصية</a>
+  <div class="footer-col">
+    <strong><span data-ar>روابط</span><span data-en hidden>Links</span></strong>
+    <a href="#top"><span data-ar>الرئيسية</span><span data-en hidden>Home</span></a>
+    <a href="#modules"><span data-ar>الوحدات</span><span data-en hidden>Modules</span></a>
+    <a href="#faq"><span data-ar>الأسئلة</span><span data-en hidden>FAQ</span></a>
   </div>
-  <div class="foot-links" data-en hidden>
-    <a href="index.html">Home</a>
-    <a href="support.html">Support</a>
-    <a href="privacy.html">Privacy Policy</a>
+  <div class="footer-col">
+    <strong><span data-ar>الدعم والخصوصية</span><span data-en hidden>Support &amp; Privacy</span></strong>
+    <a href="support.html"><span data-ar>الدعم</span><span data-en hidden>Support</span></a>
+    <a href="privacy.html"><span data-ar>سياسة الخصوصية</span><span data-en hidden>Privacy Policy</span></a>
   </div>
-  <div class="foot-email ltr"><a href="mailto:support@optisoul.app">support@optisoul.app</a></div>
+  <div class="footer-col">
+    <strong><span data-ar>تواصل معنا</span><span data-en hidden>Contact</span></strong>
+    <a class="footer-email" href="mailto:support@optisoul.app">support@optisoul.app</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Opti Soul</div>
 </footer>
 
 <script src="lang.js"></script>
+<script src="assets/js/nav.js"></script>
 </body>
 </html>
