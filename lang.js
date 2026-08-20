@@ -14,6 +14,13 @@
       el.hidden = lang !== "en";
     });
 
+    // aria-label ثنائية اللغة — لا يمكن وضع span داخل سمة، فتُقرأ من
+    // data-aria-label-ar/data-aria-label-en وتُكتب على aria-label نفسها.
+    document.querySelectorAll("[data-aria-label-ar]").forEach(function (el) {
+      var value = lang === "ar" ? el.getAttribute("data-aria-label-ar") : el.getAttribute("data-aria-label-en");
+      if (value) el.setAttribute("aria-label", value);
+    });
+
     var btn = document.getElementById("langBtn");
     if (btn) btn.textContent = lang === "ar" ? "English" : "العربية";
 

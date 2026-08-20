@@ -3,8 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var html = document.documentElement;
+  html.classList.add("js");
+  /* شبكة أمان: لو تعذّر تحميل assets/js/nav.js (شبكة · حاجب إعلانات · خطأ
+     تحليل) يبقى المحتوى مخفيًا للأبد بصنف html.js وحده بلا هذا؛ نظهره
+     قسرًا بعد مهلة قصيرة إن لم يكن nav.js قد فعل ذلك عبر IntersectionObserver
+     أولًا. راجع assets/style.css (قواعد .reveal) لسياق الحل الكامل. */
+  setTimeout(function () {
+    var els = document.querySelectorAll(".reveal:not(.is-visible)");
+    for (var i = 0; i < els.length; i++) els[i].classList.add("is-visible");
+  }, 1500);
+})();
+</script>
 <title>الدعم — Opti Soul</title>
 <meta name="description" content="دعم تطبيق Opti Soul — Support for the Opti Soul app.">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/brand/favicon-180.png">
 <link rel="canonical" href="https://optisoul.app/support.html">
 <link rel="alternate" hreflang="ar" href="https://optisoul.app/support.html">
 <link rel="alternate" hreflang="en" href="https://optisoul.app/support.html">
@@ -26,7 +43,7 @@
 <meta name="twitter:image" content="https://optisoul.app/assets/og/og-image.png">
 
 <link rel="preload" href="assets/fonts/IBMPlexSansArabic-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/IBMPlexSansArabic-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/IBMPlexSansArabic-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -42,25 +59,28 @@
       <span class="brand-name">Opti Soul</span>
     </a>
 
-    <nav class="site-nav" id="siteNav" aria-label="التنقّل الرئيسي">
-      <a href="index.html"><span data-ar>الرئيسية</span><span data-en hidden>Home</span></a>
-      <a href="index.html#modules"><span data-ar>الوحدات</span><span data-en hidden>Modules</span></a>
-      <a href="index.html#faq"><span data-ar>الأسئلة</span><span data-en hidden>FAQ</span></a>
-      <a href="support.html"><span data-ar>الدعم</span><span data-en hidden>Support</span></a>
-      <a href="privacy.html"><span data-ar>الخصوصية</span><span data-en hidden>Privacy</span></a>
-    </nav>
-
     <div class="header-actions">
       <button id="langBtn" class="lang-toggle" type="button">English</button>
-      <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+    </div>
+
+    <details class="nav-disclosure" id="navDisclosure" open>
+      <summary class="nav-toggle" id="navToggle" aria-controls="siteNav" aria-expanded="true">
         <span class="bar-line" aria-hidden="true"></span>
         <span class="bar-line" aria-hidden="true"></span>
         <span class="bar-line" aria-hidden="true"></span>
         <span class="sr-only">
-          <span data-ar>فتح القائمة</span><span data-en hidden>Open menu</span>
+          <span data-ar>فتح القائمة أو إغلاقها</span><span data-en hidden>Open or close the menu</span>
         </span>
-      </button>
-    </div>
+      </summary>
+
+      <nav class="site-nav" id="siteNav" aria-label="التنقّل الرئيسي" data-aria-label-ar="التنقّل الرئيسي" data-aria-label-en="Main navigation">
+        <a href="index.html"><span data-ar>الرئيسية</span><span data-en hidden>Home</span></a>
+        <a href="index.html#modules"><span data-ar>الوحدات</span><span data-en hidden>Modules</span></a>
+        <a href="index.html#faq"><span data-ar>الأسئلة</span><span data-en hidden>FAQ</span></a>
+        <a href="support.html"><span data-ar>الدعم</span><span data-en hidden>Support</span></a>
+        <a href="privacy.html"><span data-ar>الخصوصية</span><span data-en hidden>Privacy</span></a>
+      </nav>
+    </details>
   </div>
 </header>
 

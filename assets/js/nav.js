@@ -1,22 +1,62 @@
 (function () {
   "use strict";
 
-  /* ---------- القائمة المنسدلة (hamburger) ---------- */
+  /* ---------- القائمة المنسدلة (hamburger) ----------
+     الآلية الأساسية details/summary أصيلة في HTML — تعمل بلا هذا الكود
+     تمامًا (سمة open حقيقية، تعمل بالنقر وEnter/Space على summary، ومحتوى
+     details المغلق يُستبعد تلقائيًا من ترتيب Tab بواسطة المتصفح نفسه).
+     كل ما هنا تحسين تقدّمي فوق ذلك: إغلاق افتراضي أنيق على الجوال بدل
+     الفتح الدائم، مزامنة aria-expanded كطبقة دفاع إضافية، وEsc/النقر خارج
+     القائمة — كلاهما لا يمكن تحقيقه بـCSS خالص (لا محدِّد CSS لضغطة مفتاح
+     أو "خارج عنصر"). */
   function initNavToggle() {
-    var toggle = document.getElementById("navToggle");
+    var details = document.getElementById("navDisclosure");
+    var summary = document.getElementById("navToggle");
     var nav = document.getElementById("siteNav");
-    if (!toggle || !nav) return;
+    if (!details || !summary || !nav) return;
 
-    toggle.addEventListener("click", function () {
-      var open = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!open));
-      nav.classList.toggle("is-open", !open);
-    });
+    var isMobile = function () { return window.matchMedia("(max-width: 640px)").matches; };
+    var desktopQuery = window.matchMedia("(min-width: 641px)");
+
+    // إغلاق افتراضي أنيق على الجوال فقط — تحسين، لا شرط. بلا JS تبقى
+    // القائمة مفتوحة (سمة open الثابتة في HTML)، وهذا سلوك سليم تمامًا.
+    if (isMobile()) details.open = false;
+
+    // عند الانتقال لعرض سطح المكتب (تدوير جهاز، سحب نافذة) تُفرض open=true
+    // دائمًا — summary مخفي بصريًا هناك أصلًا، فلا فرق ظاهري، لكن هذا يمنع
+    // بقاء details في حالة "مغلقة" فعليًا أثناء display:contents، وهو سلوك
+    // غير موثَّق بثبات عبر المحرّكات لعنصر details تحديدًا.
+    var syncOpenForViewport = function (e) {
+      if (e.matches) details.open = true;
+    };
+    if (desktopQuery.matches) details.open = true;
+    if (desktopQuery.addEventListener) {
+      desktopQuery.addEventListener("change", syncOpenForViewport);
+    } else if (desktopQuery.addListener) {
+      desktopQuery.addListener(syncOpenForViewport); // دعم متصفحات أقدم
+    }
+
+    var syncAria = function () {
+      summary.setAttribute("aria-expanded", String(details.open));
+    };
+    syncAria();
+
+    details.addEventListener("toggle", syncAria);
 
     nav.addEventListener("click", function (e) {
-      if (e.target.tagName === "A" && window.matchMedia("(max-width: 640px)").matches) {
-        toggle.setAttribute("aria-expanded", "false");
-        nav.classList.remove("is-open");
+      if (e.target.tagName === "A" && isMobile()) details.open = false;
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && details.open && isMobile()) {
+        details.open = false;
+        summary.focus();
+      }
+    });
+
+    document.addEventListener("click", function (e) {
+      if (isMobile() && details.open && !details.contains(e.target)) {
+        details.open = false;
       }
     });
   }

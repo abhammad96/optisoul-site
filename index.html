@@ -3,8 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var html = document.documentElement;
+  html.classList.add("js");
+  /* شبكة أمان: لو تعذّر تحميل assets/js/nav.js (شبكة · حاجب إعلانات · خطأ
+     تحليل) يبقى المحتوى مخفيًا للأبد بصنف html.js وحده بلا هذا؛ نظهره
+     قسرًا بعد مهلة قصيرة إن لم يكن nav.js قد فعل ذلك عبر IntersectionObserver
+     أولًا. راجع assets/style.css (قواعد .reveal) لسياق الحل الكامل. */
+  setTimeout(function () {
+    var els = document.querySelectorAll(".reveal:not(.is-visible)");
+    for (var i = 0; i < els.length; i++) els[i].classList.add("is-visible");
+  }, 1500);
+})();
+</script>
 <title>Opti Soul — رفيقك في اللياقة والصحة</title>
 <meta name="description" content="Opti Soul — تطبيق عربي لمتابعة اللياقة والصحة: تمارين القوة، الكارديو والكروسفت، النوم، البيانات الصحية، والتغذية، في مكان واحد.">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/brand/favicon-180.png">
 <link rel="canonical" href="https://optisoul.app/">
 <link rel="alternate" hreflang="ar" href="https://optisoul.app/">
 <link rel="alternate" hreflang="en" href="https://optisoul.app/">
@@ -26,7 +43,7 @@
 <meta name="twitter:image" content="https://optisoul.app/assets/og/og-image.png">
 
 <link rel="preload" href="assets/fonts/IBMPlexSansArabic-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/IBMPlexSansArabic-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/IBMPlexSansArabic-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
 
 <script type="application/ld+json">
@@ -56,25 +73,28 @@
       <span class="brand-name">Opti Soul</span>
     </a>
 
-    <nav class="site-nav" id="siteNav" aria-label="التنقّل الرئيسي">
-      <a href="#top"><span data-ar>الرئيسية</span><span data-en hidden>Home</span></a>
-      <a href="#modules"><span data-ar>الوحدات</span><span data-en hidden>Modules</span></a>
-      <a href="#faq"><span data-ar>الأسئلة</span><span data-en hidden>FAQ</span></a>
-      <a href="support.html"><span data-ar>الدعم</span><span data-en hidden>Support</span></a>
-      <a href="privacy.html"><span data-ar>الخصوصية</span><span data-en hidden>Privacy</span></a>
-    </nav>
-
     <div class="header-actions">
       <button id="langBtn" class="lang-toggle" type="button">English</button>
-      <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+    </div>
+
+    <details class="nav-disclosure" id="navDisclosure" open>
+      <summary class="nav-toggle" id="navToggle" aria-controls="siteNav" aria-expanded="true">
         <span class="bar-line" aria-hidden="true"></span>
         <span class="bar-line" aria-hidden="true"></span>
         <span class="bar-line" aria-hidden="true"></span>
         <span class="sr-only">
-          <span data-ar>فتح القائمة</span><span data-en hidden>Open menu</span>
+          <span data-ar>فتح القائمة أو إغلاقها</span><span data-en hidden>Open or close the menu</span>
         </span>
-      </button>
-    </div>
+      </summary>
+
+      <nav class="site-nav" id="siteNav" aria-label="التنقّل الرئيسي" data-aria-label-ar="التنقّل الرئيسي" data-aria-label-en="Main navigation">
+        <a href="#top"><span data-ar>الرئيسية</span><span data-en hidden>Home</span></a>
+        <a href="#modules"><span data-ar>الوحدات</span><span data-en hidden>Modules</span></a>
+        <a href="#faq"><span data-ar>الأسئلة</span><span data-en hidden>FAQ</span></a>
+        <a href="support.html"><span data-ar>الدعم</span><span data-en hidden>Support</span></a>
+        <a href="privacy.html"><span data-ar>الخصوصية</span><span data-en hidden>Privacy</span></a>
+      </nav>
+    </details>
   </div>
 </header>
 
@@ -124,7 +144,7 @@
 <section id="modules" class="reveal" aria-labelledby="modules-heading">
   <h2 id="modules-heading"><span data-ar>الوحدات الست</span><span data-en hidden>The Six Modules</span></h2>
 
-  <div class="tablist" role="tablist" aria-label="الوحدات">
+  <div class="tablist" role="tablist" aria-label="الوحدات" data-aria-label-ar="الوحدات" data-aria-label-en="Modules">
     <button role="tab" id="tab-strength" aria-controls="panel-strength" aria-selected="true" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6M6 7v10M18 7v10M20 9v6M6 12h12"/></svg>
       <span data-ar>القوة</span><span data-en hidden>Strength</span>
@@ -134,7 +154,13 @@
       <span data-ar>الكارديو</span><span data-en hidden>Cardio</span>
     </button>
     <button role="tab" id="tab-crossfit" aria-controls="panel-crossfit" aria-selected="false" tabindex="-1">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 13V9M9 3h6"/></svg>
+      <!-- Phosphor Regular "lightning" (U+E2DE) — نفس أيقونة الكروسفت الحقيقية في
+           التطبيق (os_icon.dart:538, PhosphorIconsRegular.lightning). مستخرجة
+           بـfontTools من lib/fonts/Phosphor.ttf داخل حزمة phosphoricons_flutter
+           في ~/.pub-cache، لا رسم يدوي. مسار مملوء (fill) لا محدَّد (stroke) —
+           هذا هو التمثيل الحقيقي لغليف الخط، يخالف أسلوب الأيقونات الخمس
+           الأخرى عمدًا (انظر التقرير). -->
+      <svg viewBox="0 0 1024 1024" aria-hidden="true"><g transform="scale(1,-1) translate(0,-1024)"><path fill="currentColor" d="M863 487Q861 495 856.0 501.0Q851 507 843 510L613 596L671 890Q672 891 672.0 892.5Q672 894 672 896Q672 909 662.5 918.5Q653 928 640 928Q633 928 627.0 925.0Q621 922 617 918L169 438Q165 433 162.5 427.5Q160 422 160 416Q160 405 165.5 397.0Q171 389 180 386H181L411 299L353 6Q352 5 352.0 3.5Q352 2 352 0Q352 -13 361.5 -22.5Q371 -32 384 -32Q391 -32 397.0 -29.0Q403 -26 407 -22L855 458Q859 463 861.5 468.5Q864 474 864 480Q864 482 864.0 484.0Q864 486 863 488V487ZM437 104 479 314Q480 315 480.0 316.5Q480 318 480 320Q480 330 474.5 338.0Q469 346 460 350H459L248 429L586 792L545 582Q544 581 544.0 579.5Q544 578 544 576Q544 566 549.5 558.0Q555 550 564 546H565L776 467Z"/></g></svg>
       <span data-ar>الكروسفت</span><span data-en hidden>CrossFit</span>
     </button>
     <button role="tab" id="tab-sleep" aria-controls="panel-sleep" aria-selected="false" tabindex="-1">

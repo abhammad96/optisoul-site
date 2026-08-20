@@ -7,11 +7,13 @@
    ===================================================================== */
 
 :root {
-  /* الألوان — AppPalette.dark (app_theme.dart:128-170) */
+  /* الألوان — AppPalette.dark (app_theme.dart:128-170). لا رمز مُعرَّف هنا
+     بلا استهلاك فعلي في هذا الملف — grep -oE 'var\(--[a-zA-Z0-9-]+' يجب أن
+     يطابق كل متغيّر أدناه؛ رموز AppPalette الأخرى (surface-elevated-top/
+     bottom · error · on-colored · accent-fill) لا استخدام فعليًا لها في
+     هذا الموقع البسيط فحُذفت بدل تركها معرَّفة بلا استهلاك. */
   --background: #0E1526;         /* AMEND-10 */
   --surface: #151F38;            /* AMEND-10 */
-  --surface-elevated-top: #1B2745;    /* AMEND-10 */
-  --surface-elevated-bottom: #131C36; /* AMEND-10 */
   --text-primary: #F2F2ED;
   --text-secondary: #B4BCD8;
   --text-muted: #8A93B4;
@@ -20,10 +22,7 @@
   --stroke: #7C93E8;
   --success: #5FD97F;
   --warning: #EDB458;
-  --error: #E8705F;
   --on-brand: #FFFFFF;
-  --on-colored: #151931;
-  --accent-fill: #00FFCC;
   --on-accent-fill: #0A2A22;     /* AMEND-4 — ثابت في الوضعين */
 
   /* الطبقات الشفافة — نفس نِسَب alpha في AppPalette.dark */
@@ -41,11 +40,9 @@
   --s5: 24px;
   --s6: 32px;
 
-  /* أنصاف الأقطار — AppRadii (app_theme.dart:701-716) */
+  /* أنصاف الأقطار — AppRadii (app_theme.dart:701-716) — فقط ما يُستهلك فعليًا */
   --r-card: 16px;
   --r-button: 12px;
-  --r-input: 12px;
-  --r-sheet: 24px;
 
   /* الظل — AppShadows.floating (app_theme.dart:737-747): Color(0x59000000) */
   --shadow-floating: 0 4px 12px rgba(0, 0, 0, 0.35);
@@ -186,11 +183,15 @@ summary:focus-visible {
 }
 
 .brand-mark {
+  /* SVG متجه مُستخرَج بـpotrace من نفس ألفا-قناع opti-soul-mark.png الأصلي
+     (يبقى في المستودع كمصدر)، تحقّق التطابق بفارق متوسط 1.18/255 بكسل عبر
+     مقارنة ألفا مباشرة. حجم أصغر بـ94% (8.3KB مقابل 144.7KB)، وحادّ في أي
+     دقّة شاشة لأنه متجهي لا نقطي — يحلّ سؤال الحدّة على 2x/3x نهائيًا. */
   inline-size: 28px;
   block-size: 28px;
   background-color: var(--text-primary);
-  -webkit-mask-image: url("brand/opti-soul-mark.png");
-  mask-image: url("brand/opti-soul-mark.png");
+  -webkit-mask-image: url("brand/opti-soul-mark.svg");
+  mask-image: url("brand/opti-soul-mark.svg");
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -201,6 +202,18 @@ summary:focus-visible {
 }
 
 .brand-name { direction: ltr; unicode-bidi: isolate; }
+
+/* القائمة المنسدلة للجوال — details/summary أصيل، يعمل بلا JS: الحالة
+   المفتوحة/المغلقة سمة HTML حقيقية (open)، لا صنف يديره JS. summary هو
+   الابن الأول إلزاميًا (شرط المتصفح ليعمل كمشغّل)، فانتقل زر الهامبرغر
+   في DOM إلى ما بعد .header-actions؛ رُتِّب بصريًا بـorder على سطح المكتب
+   فقط ليعود بين الشعار والإجراءات كما كان (انظر ترتيب @media(min-width:641px)
+   أدناه). */
+.nav-disclosure { margin: 0; }
+
+.nav-disclosure summary.nav-toggle { list-style: none; }
+.nav-disclosure summary.nav-toggle::-webkit-details-marker { display: none; }
+.nav-disclosure summary.nav-toggle::marker { content: ""; }
 
 .site-nav {
   display: flex;
@@ -249,7 +262,7 @@ summary:focus-visible {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: var(--s1);
   background: transparent;
   border: 1px solid var(--button-edge);
   border-radius: var(--r-button);
@@ -269,8 +282,13 @@ summary:focus-visible {
     opacity var(--motion-fast) var(--motion-curve);
 }
 
+/* تحويل الهامبرغر إلى X — مرتبط بسمة [open] الأصيلة (يعمل بلا JS)، وأيضًا
+   بـaria-expanded إن ضبطها JS كطبقة دفاع إضافية (اتفاق الحالتين لا يضرّ). */
+.nav-disclosure[open] > summary.nav-toggle .bar-line:nth-child(1),
 .nav-toggle[aria-expanded="true"] .bar-line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-disclosure[open] > summary.nav-toggle .bar-line:nth-child(2),
 .nav-toggle[aria-expanded="true"] .bar-line:nth-child(2) { opacity: 0; }
+.nav-disclosure[open] > summary.nav-toggle .bar-line:nth-child(3),
 .nav-toggle[aria-expanded="true"] .bar-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 .sr-only {
@@ -572,18 +590,34 @@ strong { font-weight: 600; color: var(--text-primary); }
 .tile strong { display: block; color: var(--text-primary); font-size: 16px; margin-block-end: var(--s1); }
 .tile span { color: var(--text-secondary); font-size: 13px; }
 
-/* ---------- ظهور تدريجي عند التمرير ---------- */
+/* ---------- ظهور تدريجي عند التمرير ----------
+   الافتراض: مرئي (opacity:1) بلا أي شرط — هذا ما يراه أي زائر/زاحف لا
+   ينفّذ JS. الإخفاء نفسه مشروط بـhtml.js (يضيفها سكربت مضمَّن صغير في
+   <head> كل صفحة، قبل هذا الملف، لا داخل nav.js) — فلا يُخفى شيء إلا وقد
+   ثبت أن JS يعمل فعلًا. هذا يغطي الحالات الثلاث بقاعدة واحدة: بلا JS
+   (html.js غائبة، لا إخفاء) · JS يعمل (nav.js يُظهر عبر IntersectionObserver)
+   · JS يعمل لكن nav.js فشل تحميله (شبكة أمان setTimeout في السكربت
+   المضمَّن نفسه يُظهر كل شيء بعد 1.5 ثانية إن لم يظهر بالفعل). */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+html.js .reveal {
   opacity: 0;
   transform: translateY(12px);
   transition: opacity var(--motion-medium) var(--motion-curve),
     transform var(--motion-medium) var(--motion-curve);
 }
 
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
+html.js .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  html.js .reveal, .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ---------- التذييل ---------- */
@@ -635,7 +669,9 @@ footer {
     box-shadow: var(--shadow-floating);
   }
 
-  .site-nav.is-open { display: flex; }
+  /* الإظهار مربوط بسمة [open] الأصيلة لعنصر details — لا صنف JS. الابن
+     المباشر > يمنع تطابق روابط أخرى بالخطأ. */
+  .nav-disclosure[open] > .site-nav { display: flex; }
   .site-nav a { padding-block: var(--s3); border-block-end: 1px solid var(--border); }
   .site-nav a:last-child { border-block-end: 0; }
 
@@ -655,6 +691,20 @@ footer {
     display: flex;
     align-items: center;
   }
+}
+
+@media (min-width: 641px) {
+  /* سطح المكتب: القائمة مفتوحة دائمًا (سمة open ثابتة في HTML)، summary
+     مخفي بقاعدة .nav-toggle{display:none} الافتراضية أعلاه، فلا يبقى من
+     details سوى .site-nav. display:contents يزيل صندوق details نفسه من
+     التخطيط فيتصرّف .site-nav كعنصر flex مباشر في .bar (يستعيد flex:1 +
+     justify-content:center كما كان قبل التبويبات إلى details)، وorder
+     يعيد الترتيب البصري: الشعار ← الوحدات ← إجراءات الترويسة، رغم أن
+     details يقع بعد .header-actions في DOM (تطلّبه كون summary ابنًا أول
+     إلزاميًا). */
+  .brand { order: 1; }
+  .nav-disclosure { order: 2; display: contents; }
+  .header-actions { order: 3; }
 }
 
 @media (min-width: 641px) and (max-width: 900px) {
