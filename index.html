@@ -7,14 +7,17 @@
 <meta name="description" content="Opti Soul — تمارينك وأكلك ونومك وبياناتك الصحية في مكان واحد.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href="index.html">Opti Soul</a>
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Opti Soul</span>
+    </a>
     <button id="langBtn" class="lang-toggle" type="button">English</button>
   </div>
 </header>
@@ -25,8 +28,45 @@
 <section class="card" data-ar>
   <h1>من اليوم، صحتك ولياقتك لها رفيق ما ينساك</h1>
   <p><span class="ltr">Opti Soul</span> تطبيق عربي لمتابعة اللياقة والصحة في مكان واحد: تمارين القوة، الكارديو والكروسفت، النوم، البيانات الصحية، الأكل، والمايكروز.</p>
-  <p class="meta">التطبيق حاليًا في مرحلة الاختبار المغلق.</p>
 </section>
+
+<div class="beta-banner" data-ar>
+  <span class="beta-dot" aria-hidden="true"></span>
+  <span>التطبيق في نسخة تجريبية مغلقة حاليًا.</span>
+</div>
+
+<div class="modules" data-ar>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6M6 7v10M18 7v10M20 9v6M6 12h12"/></svg></span>
+    <strong>القوة</strong>
+    <span>برامج تدريب وجلسات قوة بمجموعات وتكرارات وأوزان، مع سجل تقدّم لكل تمرين.</span>
+  </div>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 3 12 2-8 2 2h5"/></svg></span>
+    <strong>الكارديو</strong>
+    <span>جري ومشي ودراجة وسباحة وغيرها — المدة والمسافة والسعرات المحروقة.</span>
+  </div>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13V9M9 3h6"/></svg></span>
+    <strong>الكروسفت</strong>
+    <span>تسجيل WODs بصيغها المختلفة، وأرقامك الشخصية في الحركات الأساسية.</span>
+  </div>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg></span>
+    <strong>النوم</strong>
+    <span>تسجيل يدوي أو مزامنة تلقائية، ومتابعة المدة والجودة عبر الوقت.</span>
+  </div>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.9 9.2 2.4 5.5 6 5c2-.3 3.7.8 4.5 2.2C11.3 5.8 13 4.7 15 5c3.6.5 5.1 4.2 3.5 7.5C16 16.65 12 21 12 21Z"/><path d="M12 9v4M10 11h4"/></svg></span>
+    <strong>الصحة</strong>
+    <span>الوزن ونبض الراحة وضغط الدم ومحيطات الجسم — قراءات يدوية أو مُزامنة.</span>
+  </div>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v8M4 3v5a2 2 0 0 0 4 0V3M16 3c-1.7 0-3 2.2-3 5s1.3 5 3 5v8"/></svg></span>
+    <strong>التغذية</strong>
+    <span>بحث في قاعدة أطعمة محلية أو مسح باركود، ومتابعة السعرات والمايكروز يوميًا.</span>
+  </div>
+</div>
 
 <div class="tiles" data-ar>
   <a class="tile" href="support.html">
@@ -43,8 +83,45 @@
 <section class="card" data-en hidden>
   <h1>From today, your health and fitness have a companion that never forgets</h1>
   <p>Opti Soul is an Arabic app for tracking fitness and health in one place: strength training, cardio and CrossFit, sleep, health data, nutrition, and macros.</p>
-  <p class="meta">The app is currently in closed beta.</p>
 </section>
+
+<div class="beta-banner" data-en hidden>
+  <span class="beta-dot" aria-hidden="true"></span>
+  <span>The app is currently in closed beta.</span>
+</div>
+
+<div class="modules" data-en hidden>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6M6 7v10M18 7v10M20 9v6M6 12h12"/></svg></span>
+    <strong>Strength</strong>
+    <span>Training programmes and strength sessions with sets, reps and weights, plus a progress log per exercise.</span>
+  </div>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 3 12 2-8 2 2h5"/></svg></span>
+    <strong>Cardio</strong>
+    <span>Running, walking, cycling, swimming and more — duration, distance and calories burned.</span>
+  </div>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13V9M9 3h6"/></svg></span>
+    <strong>CrossFit</strong>
+    <span>Log WODs in their various formats, and track personal records in foundational movements.</span>
+  </div>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg></span>
+    <strong>Sleep</strong>
+    <span>Manual logging or automatic sync, tracking duration and quality over time.</span>
+  </div>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.9 9.2 2.4 5.5 6 5c2-.3 3.7.8 4.5 2.2C11.3 5.8 13 4.7 15 5c3.6.5 5.1 4.2 3.5 7.5C16 16.65 12 21 12 21Z"/><path d="M12 9v4M10 11h4"/></svg></span>
+    <strong>Health</strong>
+    <span>Weight, resting heart rate, blood pressure and body measurements — manual or synced.</span>
+  </div>
+  <div class="module">
+    <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v8M4 3v5a2 2 0 0 0 4 0V3M16 3c-1.7 0-3 2.2-3 5s1.3 5 3 5v8"/></svg></span>
+    <strong>Nutrition</strong>
+    <span>Search a local food database or scan a barcode, and track daily calories and macros.</span>
+  </div>
+</div>
 
 <div class="tiles" data-en hidden>
   <a class="tile" href="support.html">
@@ -60,16 +137,17 @@
 </main>
 
 <footer>
-  <span data-ar>
+  <div class="foot-links" data-ar>
     <a href="index.html">الرئيسية</a>
     <a href="support.html">الدعم</a>
     <a href="privacy.html">سياسة الخصوصية</a>
-  </span>
-  <span data-en hidden>
+  </div>
+  <div class="foot-links" data-en hidden>
     <a href="index.html">Home</a>
     <a href="support.html">Support</a>
     <a href="privacy.html">Privacy Policy</a>
-  </span>
+  </div>
+  <div class="foot-email ltr"><a href="mailto:support@optisoul.app">support@optisoul.app</a></div>
 </footer>
 
 <script src="lang.js"></script>

@@ -21,13 +21,13 @@
   }
 
   function initial() {
+    // العربية هي اللغة الافتراضية دائمًا عند أول زيارة — لا اعتماد على
+    // لغة المتصفح. الإنجليزية بديل يُختار صراحة، ويُحفظ الاختيار محليًا.
     try {
       var saved = localStorage.getItem(KEY);
       if (saved === "ar" || saved === "en") return saved;
     } catch (e) {}
-    return (navigator.language || "ar").toLowerCase().indexOf("ar") === 0
-      ? "ar"
-      : "en";
+    return "ar";
   }
 
   document.addEventListener("DOMContentLoaded", function () {

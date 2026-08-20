@@ -1,0 +1,327 @@
+/* =====================================================================
+   Opti Soul — أنماط الموقع، مبنية على نظام التصميم v2.0 للتطبيق.
+   كل قيمة أدناه مقيسة من opti_soul: docs/Design-System-v2_0.md ·
+   docs/DS-v2.0-Token-Dictionary.md · lib/core/app_theme.dart (الكود هو
+   الحقيقة عند أي تعارض — لم يقع تعارض هنا، القيم متطابقة في المصدرين).
+   لا لون أو مسافة أو نصف قطر من خارج هذا القياس.
+   ===================================================================== */
+
+:root {
+  /* الألوان — AppPalette.dark (app_theme.dart:128-170) */
+  --background: #0E1526;         /* AMEND-10 */
+  --surface: #151F38;            /* AMEND-10 */
+  --surface-elevated-top: #1B2745;    /* AMEND-10 */
+  --surface-elevated-bottom: #131C36; /* AMEND-10 */
+  --text-primary: #F2F2ED;
+  --text-secondary: #B4BCD8;
+  --text-muted: #8A93B4;
+  --interactive: #00FFCC;        /* الأكسنت — نيون، للمساحات الصغيرة فقط */
+  --brand: #3850A0;              /* AMEND-2 */
+  --stroke: #7C93E8;
+  --success: #5FD97F;
+  --warning: #EDB458;
+  --error: #E8705F;
+  --on-brand: #FFFFFF;
+  --on-colored: #151931;
+  --accent-fill: #00FFCC;
+  --on-accent-fill: #0A2A22;     /* AMEND-4 — ثابت في الوضعين */
+
+  /* الطبقات الشفافة — نفس نِسَب alpha في AppPalette.dark */
+  --border: rgba(255, 255, 255, 0.07);   /* 0x12FFFFFF */
+  --button-edge: rgba(255, 255, 255, 0.22); /* 0x38FFFFFF — AMEND-3 */
+  --input-fill: rgba(255, 255, 255, 0.05);  /* 0x0DFFFFFF */
+  --hairline: rgba(255, 255, 255, 0.14);    /* 0x24FFFFFF */
+  --pressed: rgba(255, 255, 255, 0.12);     /* 0x1FFFFFFF */
+
+  /* المسافات — AppSpacing (app_theme.dart:667-679) */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+
+  /* أنصاف الأقطار — AppRadii (app_theme.dart:701-716) */
+  --r-card: 16px;
+  --r-button: 12px;
+  --r-input: 12px;
+  --r-sheet: 24px;
+
+  /* الظل — AppShadows.floating (app_theme.dart:737-747): Color(0x59000000) */
+  --shadow-floating: 0 4px 12px rgba(0, 0, 0, 0.35);
+
+  /* الحركة — AppMotion (app_theme.dart:722-735) */
+  --motion-fast: 200ms;
+  --motion-medium: 300ms;
+  --motion-curve: cubic-bezier(0.215, 0.61, 0.355, 1); /* تقريب لـ easeOutCubic */
+
+  /* الخط — pubspec.yaml: IBMPlexSansArabic (400 · 600 · 700 فقط) */
+  --font-family: "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-weight: 400;
+  line-height: 1.6; /* bodyLarge — app_theme.dart:791 */
+  font-size: 16px;  /* bodyLarge */
+}
+
+h1, h2, h3, .brand, .btn, label, button { font-family: var(--font-family); }
+
+/* ---------- الترويسة ---------- */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding-block: var(--s4);
+}
+
+.bar {
+  max-width: 860px;
+  margin-inline: auto;
+  padding-inline: var(--s5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: 20px; /* titleLarge */
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.brand-mark {
+  inline-size: 28px;
+  block-size: 28px;
+  background-color: var(--text-primary);
+  -webkit-mask-image: url("brand/opti-soul-mark.png");
+  mask-image: url("brand/opti-soul-mark.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  flex: none;
+}
+
+.brand-name { direction: ltr; unicode-bidi: isolate; }
+
+.lang-toggle {
+  background: var(--input-fill);
+  border: 1px solid var(--button-edge);
+  color: var(--text-primary);
+  border-radius: var(--r-button);
+  padding-block: var(--s2);
+  padding-inline: var(--s4);
+  font: inherit;
+  font-size: 13px; /* labelMedium */
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--motion-fast) var(--motion-curve);
+}
+
+.lang-toggle:hover { background: var(--pressed); }
+
+/* ---------- التخطيط ---------- */
+main {
+  max-width: 860px;
+  margin-inline: auto;
+  padding-inline: var(--s5);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--s5);
+  margin-block-end: var(--s4);
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--s1);
+  line-height: 1.35; /* titleLarge lineHeight نسبة */
+}
+
+h2 {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: var(--s6) 0 var(--s3);
+  padding-block-start: var(--s5);
+  border-block-start: 1px solid var(--hairline);
+  line-height: 1.45; /* titleMedium */
+}
+
+.card > h2:first-of-type {
+  border-block-start: 0;
+  padding-block-start: 0;
+  margin-block-start: var(--s5);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: var(--s5) 0 var(--s2);
+  color: var(--text-primary);
+}
+
+p { margin: 0 0 var(--s3); color: var(--text-primary); }
+
+ul { margin: 0 0 var(--s3); padding-inline-start: var(--s5); }
+li { margin-block-end: var(--s2); }
+
+.meta { color: var(--text-muted); font-size: 13px; margin: 0 0 var(--s1); }
+
+a { color: var(--interactive); }
+
+strong { font-weight: 600; color: var(--text-primary); }
+
+.ltr { direction: ltr; unicode-bidi: isolate; }
+
+.btn {
+  display: inline-block;
+  background: var(--brand);
+  color: var(--on-brand);
+  border: 1px solid var(--button-edge);
+  padding-block: var(--s3);
+  padding-inline: var(--s5);
+  border-radius: var(--r-button);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px; /* labelLarge */
+  margin-block-start: var(--s2);
+  transition: background-color var(--motion-fast) var(--motion-curve);
+}
+
+.btn:hover { background: #2E4189; }
+
+/* ---------- شارة البيتا ---------- */
+.beta-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  background: var(--input-fill);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-button);
+  padding: var(--s3) var(--s4);
+  margin-block-end: var(--s5);
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.beta-dot {
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 50%;
+  background: var(--warning);
+  flex: none;
+}
+
+/* ---------- بطاقات الوحدات الست ---------- */
+.modules {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s3);
+  margin-block-end: var(--s5);
+}
+
+.module {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--s4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.module-icon {
+  inline-size: 28px;
+  block-size: 28px;
+  color: var(--interactive);
+  flex: none;
+}
+
+.module-icon svg { display: block; inline-size: 100%; block-size: 100%; }
+
+.module strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.module span {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ---------- بطاقات الروابط (الدعم / الخصوصية) ---------- */
+.tiles { display: grid; gap: var(--s3); grid-template-columns: 1fr 1fr; }
+
+.tile {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--s4);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: border-color var(--motion-fast) var(--motion-curve);
+}
+
+.tile:hover { border-color: var(--stroke); }
+.tile strong { display: block; color: var(--text-primary); font-size: 16px; margin-block-end: var(--s1); }
+.tile span { color: var(--text-secondary); font-size: 13px; }
+
+/* ---------- التذييل ---------- */
+footer {
+  max-width: 860px;
+  margin-inline: auto;
+  padding: var(--s5) var(--s5) var(--s6);
+  color: var(--text-muted);
+  font-size: 13px;
+  border-block-start: 1px solid var(--border);
+  margin-block-start: var(--s5);
+}
+
+footer .foot-links { margin-block-end: var(--s2); }
+footer a { margin-inline-end: var(--s4); color: var(--text-secondary); }
+footer .foot-email { direction: ltr; unicode-bidi: isolate; }
+
+[hidden] { display: none !important; }
+
+/* ---------- استجابة: جوال أولًا ← لوحي ← سطح مكتب ---------- */
+@media (max-width: 640px) {
+  .bar { padding-inline: var(--s4); }
+  main { padding-inline: var(--s4); }
+  footer { padding-inline: var(--s4); }
+  .card { padding: var(--s4); }
+  h1 { font-size: 22px; }
+  .modules { grid-template-columns: 1fr; }
+  .tiles { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .modules { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 901px) {
+  .modules { grid-template-columns: repeat(3, 1fr); }
+}
