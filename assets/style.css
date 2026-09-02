@@ -1,37 +1,17 @@
+/* tokens.css fingerprint: 1019278ce2dd — regenerate by copying opti_soul/docs/tokens.css */
+
 /* =====================================================================
-   Opti Soul — أنماط الموقع، مبنية على نظام التصميم v2.0 للتطبيق.
-   كل قيمة أدناه مقيسة من opti_soul: docs/Design-System-v2_0.md ·
-   docs/DS-v2.0-Token-Dictionary.md · lib/core/app_theme.dart (الكود هو
-   الحقيقة عند أي تعارض — تحقّق الالتزام f86181b، ولم يتغيّر رمز واحد
-   بلا مسوّغ مكتوب هنا أو في تقرير الالتزام).
+   Opti Soul — أنماط الموقع.
+   الألوان تأتي الآن من assets/tokens.css (يُستورد قبل هذا الملف على كل
+   صفحة) — لا تعريف لوني محلي هنا (AMEND — Session 37: كان لهذا الملف
+   لوحة ألوان يدوية خاصة به مقيسة من app_theme.dart؛ حُذفت واستُبدل كل
+   مستهلك بدور tokens.css المناظر، والأكسنت #00FFCC وحدّ #7C93E8 تقاعدا
+   نهائيًا لصالح كتلة أحادية اللون. التفاصيل الكاملة في تقرير الجلسة).
+   المسافات ونصف القطر والحركة والخط تبقى مِلك هذا الموقع، غير مرتبطة
+   بـtokens.css (خارج نطاق تلك الدفعة).
    ===================================================================== */
 
 :root {
-  /* الألوان — AppPalette.dark (app_theme.dart:128-170). لا رمز مُعرَّف هنا
-     بلا استهلاك فعلي في هذا الملف — grep -oE 'var\(--[a-zA-Z0-9-]+' يجب أن
-     يطابق كل متغيّر أدناه؛ رموز AppPalette الأخرى (surface-elevated-top/
-     bottom · error · on-colored · accent-fill) لا استخدام فعليًا لها في
-     هذا الموقع البسيط فحُذفت بدل تركها معرَّفة بلا استهلاك. */
-  --background: #0E1526;         /* AMEND-10 */
-  --surface: #151F38;            /* AMEND-10 */
-  --text-primary: #F2F2ED;
-  --text-secondary: #B4BCD8;
-  --text-muted: #8A93B4;
-  --interactive: #00FFCC;        /* الأكسنت — نيون، للمساحات الصغيرة فقط */
-  --brand: #3850A0;              /* AMEND-2 */
-  --stroke: #7C93E8;
-  --success: #5FD97F;
-  --warning: #EDB458;
-  --on-brand: #FFFFFF;
-  --on-accent-fill: #0A2A22;     /* AMEND-4 — ثابت في الوضعين */
-
-  /* الطبقات الشفافة — نفس نِسَب alpha في AppPalette.dark */
-  --border: rgba(255, 255, 255, 0.07);   /* 0x12FFFFFF */
-  --button-edge: rgba(255, 255, 255, 0.22); /* 0x38FFFFFF — AMEND-3 */
-  --input-fill: rgba(255, 255, 255, 0.05);  /* 0x0DFFFFFF */
-  --hairline: rgba(255, 255, 255, 0.14);    /* 0x24FFFFFF */
-  --pressed: rgba(255, 255, 255, 0.12);     /* 0x1FFFFFFF */
-
   /* المسافات — AppSpacing (app_theme.dart:667-679) */
   --s1: 4px;
   --s2: 8px;
@@ -55,32 +35,34 @@
   /* الخط — pubspec.yaml: IBMPlexSansArabic (400 · 600 · 700 فقط)، مستضاف محليًا */
   --font-family: "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Tahoma, Arial, sans-serif;
+
+  /* الهوية — الأزرق الأصلي #3850A0 محصور حرفيًّا بمكانين على كامل الموقع:
+     علامة الماركة (.brand-mark) ووسم الاسم في الترويسة (.brand) — لا شيء
+     غيرهما يستهلك هذا المتغيّر (لا أزرار، لا روابط، لا عناوين، لا تركيز).
+     كل ما عداه أحادي اللون عبر أدوار tokens.css. */
+  --brand: #3850A0;
 }
 
 /* ---------- الخط المستضاف محليًا (assets/fonts/) — لا طلب خارجي ----------
-   woff2 مُولَّد فعليًا من ttf عبر fonttools (fontTools.ttLib.woff2) — خفض
-   69.7% بالمتوسط (730148 → 221560 بايت للأوزان الثلاثة). ttf يبقى fallback
-   للمتصفحات القديمة التي لا تدعم woff2. */
+   woff2 هو الصيغة الوحيدة المستضافة الآن (Session 37: حُذف fallback الـttf
+   بعد التأكد أن كل المتصفحات المستهدفة تدعم woff2). */
 @font-face {
   font-family: "IBM Plex Sans Arabic";
-  src: url("fonts/IBMPlexSansArabic-Regular.woff2") format("woff2"),
-       url("fonts/IBMPlexSansArabic-Regular.ttf") format("truetype");
+  src: url("fonts/IBMPlexSansArabic-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "IBM Plex Sans Arabic";
-  src: url("fonts/IBMPlexSansArabic-SemiBold.woff2") format("woff2"),
-       url("fonts/IBMPlexSansArabic-SemiBold.ttf") format("truetype");
+  src: url("fonts/IBMPlexSansArabic-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "IBM Plex Sans Arabic";
-  src: url("fonts/IBMPlexSansArabic-Bold.woff2") format("woff2"),
-       url("fonts/IBMPlexSansArabic-Bold.ttf") format("truetype");
+  src: url("fonts/IBMPlexSansArabic-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -107,7 +89,7 @@ html {
    start صريح (يورَّث لكل عنصر ابن، صفر استخدام لـ right). */
 body {
   background: var(--background);
-  color: var(--text-primary);
+  color: var(--foreground);
   font-family: var(--font-family);
   font-weight: 400;
   line-height: 1.7;
@@ -128,8 +110,8 @@ h1, h2, h3, .brand, .btn, label, button { font-family: var(--font-family); line-
   position: absolute;
   inset-inline-start: var(--s3);
   inset-block-start: -100px;
-  background: var(--interactive);
-  color: var(--on-accent-fill);
+  background: var(--primary);
+  color: var(--primary-foreground);
   padding: var(--s2) var(--s4);
   border-radius: var(--r-button);
   font-weight: 600;
@@ -141,19 +123,13 @@ h1, h2, h3, .brand, .btn, label, button { font-family: var(--font-family); line-
 
 .skip-link:focus { inset-block-start: var(--s3); }
 
-/* ---------- حالة التركيز — لا تُحذف بلا بديل ---------- */
-a:focus-visible,
-button:focus-visible,
-[role="tab"]:focus-visible,
-summary:focus-visible {
-  outline: 2px solid var(--interactive);
-  outline-offset: 2px;
-  border-radius: var(--r-button);
-}
+/* ---------- حالة التركيز ---------- — سماكة حدّ لا لون خاص (tokens.css
+   :focus-visible، مستوردة قبل هذا الملف): لا قاعدة محلية إضافية هنا، كي لا
+   تُعيد تعريف outline-color بلون أكسنت متقاعد. */
 
 /* ---------- الترويسة والتنقّل ---------- */
 .site-header {
-  background: var(--surface);
+  background: var(--card);
   border-bottom: 1px solid var(--border);
   padding-block: var(--s3);
   position: sticky;
@@ -177,19 +153,19 @@ summary:focus-visible {
   gap: var(--s2);
   font-size: 20px; /* titleLarge */
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--brand);
   text-decoration: none;
   flex: none;
 }
 
 .brand-mark {
-  /* SVG متجه مُستخرَج بـpotrace من نفس ألفا-قناع opti-soul-mark.png الأصلي
-     (يبقى في المستودع كمصدر)، تحقّق التطابق بفارق متوسط 1.18/255 بكسل عبر
-     مقارنة ألفا مباشرة. حجم أصغر بـ94% (8.3KB مقابل 144.7KB)، وحادّ في أي
-     دقّة شاشة لأنه متجهي لا نقطي — يحلّ سؤال الحدّة على 2x/3x نهائيًا. */
+  /* SVG متجه مُستخرَج بـpotrace من ألفا-قناع opti-soul-mark.png الأصلي،
+     حجم أصغر بـ94% (8.3KB مقابل 144.7KB)، وحادّ في أي دقّة شاشة لأنه متجهي
+     لا نقطي — يحلّ سؤال الحدّة على 2x/3x نهائيًا. الأزرق --brand هو أحد
+     مكانين وحيدين على كامل الموقع يُسمح لهما باستهلاك لون الهوية. */
   inline-size: 28px;
   block-size: 28px;
-  background-color: var(--text-primary);
+  background-color: var(--brand);
   -webkit-mask-image: url("brand/opti-soul-mark.svg");
   mask-image: url("brand/opti-soul-mark.svg");
   -webkit-mask-size: contain;
@@ -224,7 +200,7 @@ summary:focus-visible {
 }
 
 .site-nav a {
-  color: var(--text-secondary);
+  color: var(--muted-foreground);
   text-decoration: none;
   font-size: 14px; /* labelMedium */
   font-weight: 400;
@@ -235,15 +211,15 @@ summary:focus-visible {
 }
 
 .site-nav a:hover,
-.site-nav a:focus-visible { color: var(--text-primary); }
-.site-nav a:hover { border-block-end-color: var(--stroke); }
+.site-nav a:focus-visible { color: var(--foreground); }
+.site-nav a:hover { border-block-end-color: var(--border); }
 
 .header-actions { display: flex; align-items: center; gap: var(--s3); flex: none; }
 
 .lang-toggle {
-  background: var(--input-fill);
-  border: 1px solid var(--button-edge);
-  color: var(--text-primary);
+  background: var(--muted);
+  border: 1px solid var(--border);
+  color: var(--foreground);
   border-radius: var(--r-button);
   padding-block: var(--s2);
   padding-inline: var(--s4);
@@ -251,10 +227,10 @@ summary:focus-visible {
   font-size: 13px; /* labelMedium */
   cursor: pointer;
   white-space: nowrap;
-  transition: background-color var(--motion-fast) var(--motion-curve);
+  transition: opacity var(--motion-fast) var(--motion-curve);
 }
 
-.lang-toggle:hover { background: var(--pressed); }
+.lang-toggle:hover { opacity: .75; }
 
 /* زر القائمة (الجوال) — hamburger بلا مكتبة */
 .nav-toggle {
@@ -264,7 +240,7 @@ summary:focus-visible {
   align-items: center;
   gap: var(--s1);
   background: transparent;
-  border: 1px solid var(--button-edge);
+  border: 1px solid var(--border);
   border-radius: var(--r-button);
   inline-size: 44px;
   block-size: 44px;
@@ -276,7 +252,7 @@ summary:focus-visible {
   display: block;
   inline-size: 18px;
   block-size: 2px;
-  background: var(--text-primary);
+  background: var(--foreground);
   border-radius: 1px;
   transition: transform var(--motion-fast) var(--motion-curve),
     opacity var(--motion-fast) var(--motion-curve);
@@ -324,7 +300,7 @@ section {
 #modules, #how, #faq { margin-block-start: calc(var(--s6) * 2); }
 
 .card {
-  background: var(--surface);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--r-card);
   padding: var(--s5);
@@ -334,37 +310,37 @@ section {
 h1 {
   font-size: 26px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--foreground);
   margin: 0 0 var(--s1);
 }
 
 h2 {
   font-size: 19px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--foreground);
   margin: var(--s6) 0 var(--s3);
   padding-block-start: var(--s5);
-  border-block-start: 1px solid var(--hairline);
+  border-block-start: 1px solid var(--border);
 }
 
 .card > h2:first-of-type,
 section > h2:first-child { border-block-start: 0; padding-block-start: 0; margin-block-start: var(--s5); }
 
-h3 { font-size: 16px; font-weight: 600; margin: var(--s5) 0 var(--s2); color: var(--text-primary); }
+h3 { font-size: 16px; font-weight: 600; margin: var(--s5) 0 var(--s2); color: var(--foreground); }
 
 /* عرض أقصى للنص الجاري (~68ch) لمنع فقد العين موضعها عند سطر طويل يمتد
    بعرض الشاشة كاملة. ch مبنية على عرض محرف "0" في اللاتينية وليست مقياسًا
    دقيقًا للعربية، لكنها الأداة الوحيدة المتاحة بـCSS خام؛ رُوجعت بصريًا. */
-p { margin: 0 0 var(--s3); color: var(--text-primary); max-width: 68ch; }
+p { margin: 0 0 var(--s3); color: var(--foreground); max-width: 68ch; }
 
 ul { margin: 0 0 var(--s3); padding-inline-start: var(--s5); max-width: 68ch; }
 li { margin-block-end: var(--s2); }
 
-.meta { color: var(--text-muted); font-size: 13px; margin: 0 0 var(--s1); }
+.meta { color: var(--muted-foreground); font-size: 13px; margin: 0 0 var(--s1); }
 
-a { color: var(--interactive); }
+a { color: var(--foreground); }
 
-strong { font-weight: 600; color: var(--text-primary); }
+strong { font-weight: 600; color: var(--foreground); }
 
 .ltr { direction: ltr; unicode-bidi: isolate; }
 
@@ -377,13 +353,18 @@ strong { font-weight: 600; color: var(--text-primary); }
   font-size: 16px; /* labelLarge */
   padding-block: var(--s3);
   padding-inline: var(--s5);
-  transition: background-color var(--motion-fast) var(--motion-curve),
-    border-color var(--motion-fast) var(--motion-curve),
-    transform var(--motion-fast) var(--motion-curve);
+  transition: opacity var(--motion-fast) var(--motion-curve);
 }
 
-.btn-primary { background: var(--brand); color: var(--on-brand); border: 1px solid var(--button-edge); }
-.btn-primary:hover { background: #2E4189; transform: translateY(-1px); }
+/* كتلة معكوسة أحادية — لا لون هوية على الأزرار. التحويم/الضغط عبر الشفافية
+   فقط، لا تغيير صبغة ولا إزاحة. */
+.btn-primary { background: var(--primary); color: var(--primary-foreground); }
+.btn-primary:hover { opacity: .85; }
+.btn-primary:active { opacity: .7; }
+
+.btn-secondary { background: transparent; color: var(--foreground); border: 1px solid var(--border); }
+.btn-secondary:hover { opacity: .7; }
+.btn-secondary:active { opacity: .5; }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--s3); margin-block-start: var(--s4); }
 
@@ -392,12 +373,12 @@ strong { font-weight: 600; color: var(--text-primary); }
   display: flex;
   align-items: center;
   gap: var(--s3);
-  background: var(--input-fill);
-  border: 1px solid var(--hairline);
+  background: var(--muted);
+  border: 1px solid var(--border);
   border-radius: var(--r-button);
   padding: var(--s3) var(--s4);
   margin-block-end: var(--s5);
-  color: var(--text-secondary);
+  color: var(--muted-foreground);
   font-size: 14px;
 }
 
@@ -415,7 +396,7 @@ strong { font-weight: 600; color: var(--text-primary); }
   display: flex;
   align-items: center;
   gap: var(--s2);
-  color: var(--text-secondary);
+  color: var(--muted-foreground);
   font-size: 14px;
 }
 
@@ -428,14 +409,14 @@ strong { font-weight: 600; color: var(--text-primary); }
   flex-wrap: wrap;
   gap: var(--s2);
   margin-block-end: var(--s4);
-  border-block-end: 1px solid var(--hairline);
+  border-block-end: 1px solid var(--border);
   padding-block-end: var(--s3);
 }
 
 [role="tab"] {
   background: transparent;
   border: 1px solid var(--border);
-  color: var(--text-secondary);
+  color: var(--muted-foreground);
   border-radius: var(--r-button);
   padding-block: var(--s2);
   padding-inline: var(--s4);
@@ -455,19 +436,18 @@ strong { font-weight: 600; color: var(--text-primary); }
 
 [role="tab"][aria-selected="true"] {
   /* خلفية + حد + وزن خط أثقل معًا — لا تمييز على إشارة واحدة (ضعاف البصر /
-     إضاءة قوية). لون التمييز (mask) مقيس من navIndicator في app_theme.dart:
-     interactive.withValues(alpha: 0.14) = rgba(0,255,204,0.14) — نفس تلوين
-     العنصر النشط في التطبيق، وليس brand. */
-  background: rgba(0, 255, 204, 0.14);
-  border-color: var(--interactive);
-  color: var(--text-primary);
+     إضاءة قوية). كتلة أحادية (--muted/--foreground) بدل الأكسنت المتقاعد
+     #00FFCC — لا صبغة هوية على التنقّل. */
+  background: var(--muted);
+  border-color: var(--foreground);
+  color: var(--foreground);
   font-weight: 700;
 }
 
-[role="tab"]:hover { color: var(--text-primary); border-color: var(--stroke); }
+[role="tab"]:hover { color: var(--foreground); border-color: var(--border); }
 
 [role="tabpanel"] {
-  background: var(--surface);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--r-card);
   padding: var(--s5);
@@ -481,7 +461,7 @@ strong { font-weight: 600; color: var(--text-primary); }
 .modules { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s3); margin-block-end: var(--s5); }
 
 .module {
-  background: var(--surface);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--r-card);
   padding: var(--s4);
@@ -492,12 +472,12 @@ strong { font-weight: 600; color: var(--text-primary); }
     transform var(--motion-fast) var(--motion-curve);
 }
 
-.module:hover { border-color: var(--stroke); transform: translateY(-2px); }
+.module:hover { border-color: var(--border); transform: translateY(-2px); }
 
-.module-icon { inline-size: 28px; block-size: 28px; color: var(--interactive); flex: none; }
+.module-icon { inline-size: 28px; block-size: 28px; color: var(--foreground); flex: none; }
 .module-icon svg { display: block; inline-size: 100%; block-size: 100%; }
-.module strong { font-size: 15px; font-weight: 600; color: var(--text-primary); }
-.module span { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+.module strong { font-size: 15px; font-weight: 600; color: var(--foreground); }
+.module span { font-size: 13px; color: var(--muted-foreground); line-height: 1.7; }
 
 /* ---------- كيف يعمل — خطوات مرقّمة ---------- */
 .steps {
@@ -508,7 +488,7 @@ strong { font-weight: 600; color: var(--text-primary); }
 }
 
 .step {
-  background: var(--surface);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--r-card);
   padding: var(--s5);
@@ -521,20 +501,20 @@ strong { font-weight: 600; color: var(--text-primary); }
   inline-size: 32px;
   block-size: 32px;
   border-radius: 50%;
-  background: var(--input-fill);
-  border: 1px solid var(--button-edge);
-  color: var(--interactive);
+  background: var(--muted);
+  border: 1px solid var(--border);
+  color: var(--foreground);
   font-weight: 700;
   font-size: 15px;
   margin-block-end: var(--s3);
 }
 
 .step h3 { margin-block-start: 0; }
-.step p { color: var(--text-secondary); font-size: 14px; margin-block-end: 0; }
+.step p { color: var(--muted-foreground); font-size: 14px; margin-block-end: 0; }
 
 /* ---------- الأسئلة الشائعة — details/summary أصيلة ---------- */
 .faq-item {
-  background: var(--surface);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--r-card);
   margin-block-end: var(--s3);
@@ -546,7 +526,7 @@ strong { font-weight: 600; color: var(--text-primary); }
   list-style: none;
   padding: var(--s4) var(--s5);
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--foreground);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -558,7 +538,7 @@ strong { font-weight: 600; color: var(--text-primary); }
 .faq-caret {
   inline-size: 18px;
   block-size: 18px;
-  color: var(--text-muted);
+  color: var(--muted-foreground);
   flex: none;
   transition: transform var(--motion-fast) var(--motion-curve);
 }
@@ -567,7 +547,7 @@ strong { font-weight: 600; color: var(--text-primary); }
 
 .faq-item p {
   padding: 0 var(--s5) var(--s4);
-  color: var(--text-secondary);
+  color: var(--muted-foreground);
   margin: 0;
 }
 
@@ -576,19 +556,19 @@ strong { font-weight: 600; color: var(--text-primary); }
 
 .tile {
   display: block;
-  background: var(--surface);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--r-card);
   padding: var(--s4);
   text-decoration: none;
-  color: var(--text-primary);
+  color: var(--foreground);
   transition: border-color var(--motion-fast) var(--motion-curve),
     transform var(--motion-fast) var(--motion-curve);
 }
 
-.tile:hover { border-color: var(--stroke); transform: translateY(-2px); }
-.tile strong { display: block; color: var(--text-primary); font-size: 16px; margin-block-end: var(--s1); }
-.tile span { color: var(--text-secondary); font-size: 13px; }
+.tile:hover { border-color: var(--border); transform: translateY(-2px); }
+.tile strong { display: block; color: var(--foreground); font-size: 16px; margin-block-end: var(--s1); }
+.tile span { color: var(--muted-foreground); font-size: 13px; }
 
 /* ---------- ظهور تدريجي عند التمرير ----------
    الافتراض: مرئي (opacity:1) بلا أي شرط — هذا ما يراه أي زائر/زاحف لا
@@ -597,7 +577,9 @@ strong { font-weight: 600; color: var(--text-primary); }
    ثبت أن JS يعمل فعلًا. هذا يغطي الحالات الثلاث بقاعدة واحدة: بلا JS
    (html.js غائبة، لا إخفاء) · JS يعمل (nav.js يُظهر عبر IntersectionObserver)
    · JS يعمل لكن nav.js فشل تحميله (شبكة أمان setTimeout في السكربت
-   المضمَّن نفسه يُظهر كل شيء بعد 1.5 ثانية إن لم يظهر بالفعل). */
+   المضمَّن نفسه يُظهر كل شيء بعد 1.5 ثانية إن لم يظهر بالفعل). سكربت
+   الوضع الداكن (تفضيل النظام) مستقل تمامًا عن هذه الآلية ولا يتعارض معها
+   — كلاهما يضيف صنفًا على <html> (js/dark) دون أن يقرأ أحدهما الآخر. */
 .reveal {
   opacity: 1;
   transform: none;
@@ -625,7 +607,7 @@ footer {
   max-width: 1040px;
   margin-inline: auto;
   padding: var(--s6) var(--s5) var(--s6);
-  color: var(--text-muted);
+  color: var(--muted-foreground);
   font-size: 13px;
   border-block-start: 1px solid var(--border);
   margin-block-start: var(--s5);
@@ -635,9 +617,9 @@ footer {
   gap: var(--s4);
 }
 
-.footer-col strong { display: block; color: var(--text-primary); margin-block-end: var(--s2); font-size: 14px; }
-.footer-col a { display: block; color: var(--text-secondary); text-decoration: none; margin-block-end: var(--s1); }
-.footer-col a:hover { color: var(--text-primary); }
+.footer-col strong { display: block; color: var(--foreground); margin-block-end: var(--s2); font-size: 14px; }
+.footer-col a { display: block; color: var(--muted-foreground); text-decoration: none; margin-block-end: var(--s1); }
+.footer-col a:hover { color: var(--foreground); }
 .footer-email { direction: ltr; unicode-bidi: isolate; }
 .footer-copy { flex-basis: 100%; padding-block-start: var(--s4); border-block-start: 1px solid var(--border); margin-block-start: var(--s2); direction: ltr; unicode-bidi: isolate; text-align: end; }
 
@@ -660,7 +642,7 @@ footer {
     position: absolute;
     inset-inline: 0;
     inset-block-start: 100%;
-    background: var(--surface);
+    background: var(--card);
     border-block-end: 1px solid var(--border);
     flex-direction: column;
     align-items: stretch;
