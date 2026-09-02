@@ -17,15 +17,24 @@
   }, 1500);
 })();
 </script>
+<script>
+(function () {
+  var mql = matchMedia("(prefers-color-scheme: dark)");
+  document.documentElement.classList.toggle("dark", mql.matches);
+  mql.addEventListener("change", function (e) {
+    document.documentElement.classList.toggle("dark", e.matches);
+  });
+})();
+</script>
 <title>الدعم — Opti Soul</title>
 <meta name="description" content="دعم تطبيق Opti Soul — Support for the Opti Soul app.">
 <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/brand/favicon-180.png">
 <link rel="canonical" href="https://optisoul.app/support.html">
-<link rel="alternate" hreflang="ar" href="https://optisoul.app/support.html">
-<link rel="alternate" hreflang="en" href="https://optisoul.app/support.html">
-<link rel="alternate" hreflang="x-default" href="https://optisoul.app/support.html">
+
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F2F2ED">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0D0F1D">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Opti Soul">
@@ -44,6 +53,8 @@
 
 <link rel="preload" href="assets/fonts/IBMPlexSansArabic-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/IBMPlexSansArabic-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/IBMPlexSansArabic-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -89,7 +100,7 @@
 <!-- ==================== العربية ==================== -->
 <article class="card" data-ar>
   <h1>الدعم</h1>
-  <p>تواجهك مشكلة أو عندك سؤال أو اقتراح؟ راسلنا وبنرد عليك في أقرب وقت.</p>
+  <p>تواجهك مشكلة أو لديك سؤال أو اقتراح؟ راسلنا وسنرد عليك في أقرب وقت.</p>
   <p><a class="btn ltr" href="mailto:support@optisoul.app">support@optisoul.app</a></p>
 
   <h2>الأسئلة الشائعة</h2>
@@ -104,7 +115,7 @@
   <p>من داخل التطبيق: الإعدادات ← التكاملات ← فصل الربط. تتوقف أي مزامنة جديدة، ويبقى ما سبقت مزامنته حتى تحذفه بنفسك.</p>
 
   <h3>نسيت كلمة المرور</h3>
-  <p>من شاشة الدخول اضغط «نسيت كلمة المرور؟» وأدخل بريدك، وبيوصلك رابط لتعيين كلمة مرور جديدة.</p>
+  <p>من شاشة الدخول اضغط «نسيت كلمة المرور؟» وأدخل بريدك، وسيصلك رابط لتعيين كلمة مرور جديدة.</p>
 
   <h3>هل بياناتي الصحية تُستخدم في الإعلانات؟</h3>
   <p>لا. بياناتك الصحية تُستخدم لتقديم الخدمة فقط، ولا يُفصح عنها لأغراض إعلانية أو تسويقية. التفاصيل في <a href="privacy.html">سياسة الخصوصية</a>.</p>
@@ -156,6 +167,7 @@
     <a href="index.html"><span data-ar>الرئيسية</span><span data-en hidden>Home</span></a>
     <a href="index.html#modules"><span data-ar>الوحدات</span><span data-en hidden>Modules</span></a>
     <a href="index.html#faq"><span data-ar>الأسئلة</span><span data-en hidden>FAQ</span></a>
+    <a href="https://testflight.apple.com/join/4Tu2C73k" target="_blank" rel="noopener"><span data-ar>جرّب النسخة التجريبية</span><span data-en hidden>Try the beta</span></a>
   </div>
   <div class="footer-col">
     <strong><span data-ar>الدعم والخصوصية</span><span data-en hidden>Support &amp; Privacy</span></strong>
