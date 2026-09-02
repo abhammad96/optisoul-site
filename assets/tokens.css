@@ -1,0 +1,252 @@
+/* ============================================================================
+   Opti Soul — tokens.css
+   مصدر واحد للتوكِنات. يُستورد في اللوحين والموقع؛ لا يعلن أحدهم توكِنًا محليًّا.
+   مشتق من العلامة #151931 (صبغة 231°) ومن #F2F2ED — مقيسين من opti-soul-mark.png.
+   البنية على نمط shadcn (:root / .dark) بأسمائها وأدوارها؛ القيم قيم Opti Soul.
+   ⚠️ غير معتمد في DS الحاكم بعد. الأسبقية: الكود والقاعدة ← DS v2.0 ← هذا الملف.
+
+   AMEND-15/16/17 (هذه الدفعة): النظام أحادي اللون في واجهة التطبيق — الهوية
+   #3850A0/#7C93E8 والأكسنت #00FFCC والشفق (أورورا) كلها تنسحب من أدوار
+   الواجهة. اللون يبقى فقط للدلالة (نجاح/تحذير/خطأ) والماكروز والبيانات
+   (حلقات/رسوم/نوم) — تلك الأخيرة بمقياس تركواز واحد جديد (--data-*).
+   الأزرار/العناصر/التنقّل/الحقول: كتلة أحادية معكوسة (أبيض في الداكن ·
+   أسود في الفاتح) — لا لون علامة. التركيز: سماكة حدّ لا لون خاص — انظر
+   :focus-visible أسفل الملف.
+   ============================================================================ */
+
+:root {
+  /* ── الأسطح ── */
+  --background:            #F2F2ED;
+  --surface:               #FFFFFF;
+  --elev-top:              #FFFFFF;
+  --elev-bot:              #F7F7F4;
+  --surface-elevated:      linear-gradient(180deg, var(--elev-top), var(--elev-bot));
+  --card:                  #FFFFFF;
+  --popover:               #FFFFFF;
+
+  /* ── النص ── */
+  --foreground:            #151931;   /* 15.39 على الخلفية */
+  --card-foreground:       #151931;
+  --popover-foreground:    #151931;
+  --muted-foreground:      #4B506B;   /* 7.03 */
+
+  /* ── الحدود والحقول ── */
+  --border:                #C5C9DB;
+  --input:                 #FFFFFF;
+  --input-border:          #C5C9DB;
+  /* --ring: كانت أكسنت #00FFCC — AMEND-17: التركيز الآن حدّ محايد أثقل لا
+     لون خاص. تُبقى مُعرَّفة (تفاديًا لكسر أي استهلاك لوحي قائم) لكن تُشير
+     إلى حبر محايد، لا صبغة. انظر --focus-weight وقاعدة :focus-visible أسفل. */
+  --ring:                  var(--foreground);
+
+  /* ── الأدوار — AMEND-15: كتلة معكوسة أحادية بدل لون الهوية.
+     primary/primary-foreground يتبادلان مكان الحبر/الخلفية حرفيًّا: كتلة
+     سوداء على نص أبيض في الفاتح، وكتلة بيضاء على نص أسود في الداكن —
+     "معكوسة" بمعنى معاكسة لسطح الخلفية المحيط بها في كل وضع. ── */
+  --primary:               var(--foreground);
+  --primary-foreground:    var(--background);
+  --secondary:             #FFFFFF;
+  --secondary-foreground:  #151931;
+  --muted:                 #F7F7F4;
+
+  /* ── الدلالة — لون واحد للوضعين، بقرار المالك. الأكسنت #00FFCC تقاعد
+     (AMEND-17) — كان الدور الوحيد غير الدلالي هنا؛ لا يُستبدَل بلون آخر،
+     الإنجاز/الحالة النشطة تُعرَض الآن بالكتلة الأحادية (primary) أو
+     بالدلالة الفعلية (success) حسب السياق، لا بلون طاقة خاص. ── */
+  --success:               #5FD97F;
+  --warning:               #E8A54E;
+  --danger:                #E8705F;
+  --destructive:           #E8705F;   /* اسم shadcn، بقيمة danger — لا لون ثانٍ */
+  --destructive-foreground:#F2F2ED;
+
+  /* ── الماكروز — تحتفظ بلونها، غير متأثرة بالتحوّل الأحادي (القرار
+     يستثنيها صراحة) ── */
+  --macro-protein:         #7C93E8;
+  --macro-carbs:           #FFDB46;
+  --macro-fat:             #E8A54E;
+
+  /* ── مقياس البيانات — تركواز واحد، صبغة واحدة، كلا الوضعين (AMEND-16).
+     11 وقفة من `50` (الأفتح) إلى `950` (الأغمق) — قيم مطلقة لا تتغيّر
+     بين الوضعين؛ الأدوار أسفل تختار الوقفة المناسبة لكل وضع. اللون هنا
+     محصور بثلاثة استعمالات فقط: الحلقات · الرسوم · مراحل النوم — لا شيء
+     غيرها (لا أزرار، لا تنقّل، لا حقول). ── */
+  --data-50:               #F3FAF9;
+  --data-100:              #D7F0EE;
+  --data-200:              #B0DFDC;
+  --data-300:              #80C8C6;
+  --data-400:              #56ABAB;
+  --data-500:              #3C8F90;
+  --data-600:              #2E7073;
+  --data-700:              #285A5D;
+  --data-800:              #24494B;
+  --data-900:              #213E40;
+  --data-950:              #132D30;
+
+  /* ── الحلقات (تقدّم/أهداف) — تدرّج + رأس متوهّج، فاتح: وقفات أغمق
+     (الخلفية فاتحة فتحتاج تشبّعًا أعلى للتباين) ── */
+  --data-ring-start:       var(--data-600);
+  --data-ring-end:         var(--data-800);
+  --data-ring-head:        var(--data-900);
+
+  /* ── الرسوم البيانية — سلسلة واحدة ── */
+  --data-chart-single:     var(--data-700);
+  /* ── الرسوم البيانية — عدّة سلاسل، حتى 3 ألوان صريحة. سلسلة رابعة
+     تحتاج نمطًا (خط متقطّع/نقطي/نسيج) لا وقفة تركواز رابعة — DS-C4
+     إلزامية (اللون ليس القناة الوحيدة أصلًا، وأربع درجات من نفس الصبغة
+     مائلة للتشابه البصري بدون نمط مرافق). ── */
+  --data-chart-1:          var(--data-600);
+  --data-chart-2:          var(--data-800);
+  --data-chart-3:          var(--data-950);
+
+  /* ── مراحل النوم — مرتّبة على نفس المقياس، عميق → ريم. الثلاثة كلها
+     الآن من قرار مالك مباشر (30 أغسطس 2026): «خفيف» كانت مُستنتَجة
+     بالمنتصف بين عميق/ريم (400 داكن · 800 فاتح) — استُبدلت بـ300/700.
+     استيقاظ يبقى تحذير (لا تركواز) — دلالة لا بيانات. ── */
+  --data-sleep-deep:        var(--data-950);
+  --data-sleep-light:       var(--data-700);   /* قرار مالك (30 أغسطس 2026) — يستبدل القيمة المُستنتَجة 800 */
+  --data-sleep-rem:         var(--data-600);
+  --data-sleep-awake:       var(--warning);
+
+  /* ── نصف القطر — مقيس من lib/core/app_theme.dart:704-708 (AppRadii)
+     لا من الملحق ولا من اللوحين: كلاهما كان يحمل سلّمًا مخالفًا للكود الحيّ.
+     الأسماء بالدور لا بالحجم، لأن هذا ما يفعله AppRadii. ── */
+  --radius-button: 12px;   /* AppRadii.button */
+  --radius-input:  12px;   /* AppRadii.input */
+  --radius-snack:  12px;   /* AppRadii.snackBar */
+  --radius-card:   16px;   /* AppRadii.card */
+  --radius-sheet:  24px;   /* AppRadii.sheet */
+  --radius-pill:   999px;  /* لا نظير في AppRadii — للحبّات الدائرية */
+
+  /* أسماء اللوحين، مربوطة بالأدوار أعلاه — لا سلّم ثانٍ */
+  --r-xs: var(--radius-button);
+  --r-sm: var(--radius-button);
+  --r-md: var(--radius-card);
+  --r-lg: var(--radius-sheet);
+  --r-xl: var(--radius-pill);
+
+  /* ── الحركة — سلّم DS v2.0 الحاكم حرفيًا ── */
+  --dur-fast: 120ms;  --dur-base: 200ms;  --dur-std: 300ms;
+  --dur-scenic: 450ms; --dur-narrative: 800ms;
+  --ease-standard: cubic-bezier(0.215, 0.61, 0.355, 1);   /* easeOutCubic */
+  --ease-rings:    cubic-bezier(0.165, 0.84, 0.44, 1);    /* easeOutQuart */
+  --dur-celebration: 1200ms;  /* AMEND-11 مقترح — غالق · رقم قياسي · إنهاء جلسة */
+
+  /* ── التركيز — سماكة حدّ لا لون خاص (AMEND-17). كان --focus هالة أكسنت
+     ملوَّنة؛ الإشارة الآن سماكة الحدّ وحدها فوق حبر محايد. ── */
+  --focus-weight:          3px;
+
+  /* ── أسماء اللوحين والموقع (المستهلك الفعلي) ─────────────────────────────
+     ليست أسماء بديلة: هي الأسماء المستعملة في كل var() في اللوحين. أُبقيت
+     كما هي لئلا تُعاد كتابة 32 موضعًا، وقيمها من العائلة المعتمدة.
+     AMEND-17: --brand و--accent-ink كانتا تحملان لون الهوية/نصّه — أُعيد
+     توجيههما إلى الحبر المحايد (نفس primary/primary-foreground أعلاه) بدل
+     حذفهما، فلا ينكسر أي استهلاك لوحي قائم؛ إعادة تسمية 32 الموضع نفسها
+     خارج نطاق هذه الدفعة (توكِنات فقط، لا Dart ولا تعديل بنية اللوحين). */
+  --bg:                    #F2F2ED;
+  --elevated:              #FFFFFF;   /* للاستعمالات غير المتدرّجة فقط */
+  --stroke:                #C5C9DB;
+  --text:                  #151931;
+  --text-2:                #4B506B;
+  --brand:                 var(--primary);       /* كانت #3850A0 — أُعيد توجيهها، لا لون هوية بعد الآن */
+  --accent-ink:            var(--primary-foreground); /* كانت نصًّا فوق أكسنت #00FFCC — بلا سطح أكسنت لتقف عليه بعد التقاعد */
+  --error:                 #E8705F;
+  /* الماكروز بأسماء اللوحين — s2/s3/s4 تبقى ماكروز بلا تغيير. s1 كانت
+     الأكسنت #00FFCC (لا ماكرو) — أُعيد توجيهها لسلسلة بيانات تركواز
+     واحدة بدل حذفها (AMEND-17). */
+  --s1:                    var(--data-chart-single);
+  --s2:                    #7C93E8;   /* بروتين */
+  --s3:                    #E8A54E;   /* دهون */
+  --s4:                    #FFDB46;   /* كارب */
+  /* الظلال وحلقة التركيز */
+  --sh1: 0 1px 2px rgba(0,0,0,.04), 0 1px 1px rgba(0,0,0,.02);
+  --sh2: 0 4px 12px rgba(0,0,0,.06), 0 2px 4px rgba(0,0,0,.04);
+  --sh3: 0 12px 32px rgba(0,0,0,.08), 0 4px 8px rgba(0,0,0,.04);
+  /* --focus: كانت هالة أكسنت rgba(0,255,204,.28) — أُعيد توجيهها لحبر
+     محايد شفاف (AMEND-17)؛ الإشارة الفعلية سماكة الحدّ (--focus-weight)
+     لا هذا الظل. */
+  --focus: 0 0 0 3px rgba(21,25,49,.28);
+}
+
+.dark {
+  --background:            #0D0F1D;
+  --surface:               #13172D;
+  --elev-top:              #1A1F3C;
+  --elev-bot:              #151930;
+  --card:                  #13172D;
+  --popover:               #13172D;
+
+  --foreground:            #F2F2ED;   /* 16.95 */
+  --card-foreground:       #F2F2ED;
+  --popover-foreground:    #F2F2ED;
+  --muted-foreground:      #9A9EB8;   /* 7.21 */
+
+  --border:                #2C304C;
+  --input:                 #1A1F3C;
+  --input-border:          #2C304C;
+  --ring:                  var(--foreground);
+
+  --primary:               var(--foreground);
+  --primary-foreground:    var(--background);
+  --secondary:             #1A1F3C;
+  --secondary-foreground:  #F2F2ED;
+  --muted:                 #13172D;
+
+  /* الدلالة والماكروز: نفس قيم الفاتح — قرار المالك، لون واحد للوضعين */
+
+  /* ── الحلقات — الداكن: وقفات أفتح (الخلفية داكنة فتكفيها تشبّع أقل) ── */
+  --data-ring-start:       var(--data-200);
+  --data-ring-end:         var(--data-400);
+  --data-ring-head:        var(--data-100);
+
+  --data-chart-single:     var(--data-300);
+  --data-chart-1:          var(--data-100);
+  --data-chart-2:          var(--data-300);
+  --data-chart-3:          var(--data-500);
+
+  --data-sleep-deep:        var(--data-500);
+  --data-sleep-light:       var(--data-300);   /* قرار مالك (30 أغسطس 2026) — يستبدل القيمة المُستنتَجة 400 */
+  --data-sleep-rem:         var(--data-200);
+  --data-sleep-awake:       var(--warning);
+
+  --focus-weight:          3px;
+
+  /* أسماء اللوحين — الوضع الداكن */
+  --bg:                    #0D0F1D;
+  --elevated:              #1A1F3C;
+  --stroke:                #2C304C;
+  --text:                  #F2F2ED;
+  --text-2:                #9A9EB8;
+  --brand:                 var(--primary);
+  --accent-ink:            var(--primary-foreground);
+  --error:                 #E8705F;
+  --s1: var(--data-chart-single);  --s2: #7C93E8;  --s3: #E8A54E;  --s4: #FFDB46;
+  --sh1: none;  --sh2: none;  --sh3: none;
+  --focus: 0 0 0 3px rgba(242,242,237,.28);
+}
+
+/* ── الخصائص المنطقية إلزامية (خامسًا-د) ────────────────────────────────────
+   ✅ inset-inline · margin-inline · padding-inline · border-inline
+   ❌ left/right · margin-left · padding-right — RTL يصحّ بالبناء لا بالمراجعة   */
+
+/* ── مكاسب طباعية بصفر تكلفة ── */
+h1, h2, h3 { text-wrap: balance; }
+.num, [data-demo], time, output { font-feature-settings: 'tnum' 1; }
+
+/* ── التحويم: حالة لونية فقط. ممنوع transform/ظل/إزاحة — هي وحدها ما يكلّف
+   أداءً ويحتاج عكسًا في RTL. ولكل تحويم مكافئ لمس، فآيفون بلا تحويم. ── */
+@media (hover: hover) {
+  .interactive:hover { background: var(--elev-top); transition: background var(--dur-fast) var(--ease-standard); }
+}
+.interactive:active { background: var(--elev-top); }
+
+/* ── التركيز (AMEND-17): سماكة حدّ لا لون خاص — HIG لا يستعمل هالة أكسنت
+   ملوَّنة للتركيز، والقرار الأحادي يمنعها أصلًا. --ring الآن حبر محايد
+   (يتبع النص/الخلفية بانعكاسها التلقائي بين الوضعين)، والسماكة
+   (--focus-weight) هي الإشارة الفعلية، لا الصبغة. لا تزال :focus-visible
+   لا :focus، ولا تُحذف. ── */
+:focus-visible { outline: var(--focus-weight) solid var(--ring); outline-offset: 2px; }
+
+/* ── احترام تقليل الحركة ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
