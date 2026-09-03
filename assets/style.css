@@ -357,34 +357,6 @@ strong { font-weight: 600; color: var(--foreground); }
   transition: opacity var(--motion-fast) var(--motion-curve);
 }
 
-/* كتلة معكوسة أحادية — لا لون هوية على الأزرار. التحويم/الضغط عبر الشفافية
-   فقط، لا تغيير صبغة ولا إزاحة. */
-.btn-primary { background: var(--primary); color: var(--primary-foreground); }
-.btn-primary:hover { opacity: .85; }
-.btn-primary:active { opacity: .7; }
-
-.btn-secondary { background: transparent; color: var(--foreground); border: 1px solid var(--border); }
-.btn-secondary:hover { opacity: .7; }
-.btn-secondary:active { opacity: .5; }
-
-.hero-actions { display: flex; flex-wrap: wrap; gap: var(--s3); margin-block-start: var(--s4); }
-
-/* ---------- شارة البيتا ---------- */
-.beta-banner {
-  display: flex;
-  align-items: center;
-  gap: var(--s3);
-  background: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: var(--r-button);
-  padding: var(--s3) var(--s4);
-  margin-block-end: var(--s5);
-  color: var(--muted-foreground);
-  font-size: 14px;
-}
-
-.beta-dot { inline-size: 8px; block-size: 8px; border-radius: 50%; background: var(--warning); flex: none; }
-
 /* ---------- شريط الثقة ---------- */
 .trust-bar {
   display: flex;
