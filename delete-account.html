@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var html = document.documentElement;
+  html.classList.add("js");
+  /* شبكة أمان: لو تعذّر تحميل assets/js/nav.js (شبكة · حاجب إعلانات · خطأ
+     تحليل) يبقى المحتوى مخفيًا للأبد بصنف html.js وحده بلا هذا؛ نظهره
+     قسرًا بعد مهلة قصيرة إن لم يكن nav.js قد فعل ذلك عبر IntersectionObserver
+     أولًا. راجع assets/style.css (قواعد .reveal) لسياق الحل الكامل. */
+  setTimeout(function () {
+    var els = document.querySelectorAll(".reveal:not(.is-visible)");
+    for (var i = 0; i < els.length; i++) els[i].classList.add("is-visible");
+  }, 1500);
+})();
+</script>
+<title>حذف الحساب | Opti Soul</title>
+<meta name="description" content="خطوات حذف حساب Opti Soul نهائيًا — How to permanently delete your Opti Soul account.">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/brand/favicon-180.png">
+<link rel="canonical" href="https://optisoul.app/delete-account.html">
+
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F2F2ED">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Opti Soul">
+<meta property="og:title" content="حذف الحساب | Opti Soul">
+<meta property="og:description" content="خطوات حذف حساب Opti Soul نهائيًا — How to permanently delete your Opti Soul account.">
+<meta property="og:url" content="https://optisoul.app/delete-account.html">
+<meta property="og:locale" content="ar_SA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="حذف الحساب | Opti Soul">
+<meta name="twitter:description" content="خطوات حذف حساب Opti Soul نهائيًا — How to permanently delete your Opti Soul account.">
+
+<link rel="preload" href="assets/fonts/IBMPlexSansArabic-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/IBMPlexSansArabic-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/IBMPlexSansArabic-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">
+  <span data-ar>تخطَّ إلى المحتوى</span><span data-en hidden>Skip to content</span>
+</a>
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="support.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Opti Soul</span>
+    </a>
+
+    <div class="header-actions">
+      <button id="langBtn" class="lang-toggle" type="button">English</button>
+    </div>
+
+    <details class="nav-disclosure" id="navDisclosure" open>
+      <summary class="nav-toggle" id="navToggle" aria-controls="siteNav" aria-expanded="true">
+        <span class="bar-line" aria-hidden="true"></span>
+        <span class="bar-line" aria-hidden="true"></span>
+        <span class="bar-line" aria-hidden="true"></span>
+        <span class="sr-only">
+          <span data-ar>فتح القائمة أو إغلاقها</span><span data-en hidden>Open or close the menu</span>
+        </span>
+      </summary>
+
+      <nav class="site-nav" id="siteNav" aria-label="التنقّل الرئيسي" data-aria-label-ar="التنقّل الرئيسي" data-aria-label-en="Main navigation">
+        <a href="support.html"><span data-ar>الدعم</span><span data-en hidden>Support</span></a>
+        <a href="privacy.html"><span data-ar>الخصوصية</span><span data-en hidden>Privacy</span></a>
+        <a href="delete-account.html"><span data-ar>حذف الحساب</span><span data-en hidden>Delete Account</span></a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ==================== العربية ==================== -->
+<article class="card" data-ar>
+  <h1>حذف الحساب</h1>
+  <p>لحذف حسابك في Opti Soul نهائيًا، اتبع الخطوات التالية من داخل التطبيق:</p>
+  <p><strong>الإعدادات ← البيانات والخصوصية ← «حذف الحساب نهائيًا» ← تأكيد</strong></p>
+  <p>يؤدي الحذف إلى إزالة جميع بياناتك الشخصية والصحية (الحساب، القياسات، النوم، التمارين، الوجبات) نهائيًا من حسابك النشط.</p>
+  <p>الحذف نهائي وغير قابل للاسترجاع.</p>
+  <p>إن تعذّر عليك تسجيل الدخول، راسلنا على <a class="ltr" href="mailto:support@optisoul.app">support@optisoul.app</a> من بريدك المسجَّل لطلب حذف حسابك يدويًا.</p>
+</article>
+
+<!-- ==================== English ==================== -->
+<article class="card" data-en hidden>
+  <h1>Delete Account</h1>
+  <p>To permanently delete your Opti Soul account, follow these steps in the app:</p>
+  <p><strong>Settings &rsaquo; Data &amp; Privacy &rsaquo; "Permanently delete account" &rsaquo; Confirm</strong></p>
+  <p>Deletion permanently removes all your personal and health data (account, measurements, sleep, workouts, meals) from your active account.</p>
+  <p>Deletion is irreversible.</p>
+  <p>If you can't sign in, email <a href="mailto:support@optisoul.app">support@optisoul.app</a> from your registered address to request manual deletion.</p>
+</article>
+
+</main>
+
+<footer>
+  <div class="footer-col">
+    <strong><span data-ar>الدعم والخصوصية</span><span data-en hidden>Support &amp; Privacy</span></strong>
+    <a href="support.html"><span data-ar>الدعم</span><span data-en hidden>Support</span></a>
+    <a href="privacy.html"><span data-ar>سياسة الخصوصية</span><span data-en hidden>Privacy Policy</span></a>
+  </div>
+  <div class="footer-col">
+    <strong><span data-ar>تواصل معنا</span><span data-en hidden>Contact</span></strong>
+    <a class="footer-email" href="mailto:support@optisoul.app">support@optisoul.app</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Opti Soul</div>
+</footer>
+
+<script src="lang.js"></script>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>
